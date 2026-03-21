@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KaratIQ — AI Commerce Platform for Jewellery Retail | Happy Fly Consultancy</title>
+<meta name="description" content="KaratIQ by Happy Fly Consultancy — AI-powered commerce platform for jewellery retailers. Virtual try-ons, AI shopping assistant, visual search, and personalized recommendations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --charcoal:#1A1A2E;
+  --deep:#10101E;
+  --gold:#C9A050;
+  --gold-light:#D4AF37;
+  --gold-pale:#F5E6C8;
+  --gold-glow:rgba(201,160,80,.18);
+  --white:#FFFFFF;
+  --cream:#FFFDF7;
+  --ivory:#FBF8F1;
+  --g50:#FAFAF8;
+  --g100:#F5F4F0;
+  --g200:#E8E6E0;
+  --g300:#D1CFC8;
+  --g400:#9E9B93;
+  --g500:#6B6860;
+  --g600:#4A4840;
+  --g700:#33322B;
+  --g800:#1E1D18;
+  --g900:#0F0E0A;
+  --serif:'DM Serif Display',Georgia,serif;
+  --sans:'Outfit',system-ui,sans-serif;
+  --mono:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(.16,1,.3,1)
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--g800);background:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.container{max-width:1200px;margin:0 auto;padding:0 2rem}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes pulse-ring{0%{transform:scale(1);opacity:.4}100%{transform:scale(1.5);opacity:0}}
+@keyframes gradient-shift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+
+.reveal{opacity:0;transform:translateY(40px);transition:all .8s var(--ease)}.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.2s}.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}.reveal-delay-5{transition-delay:.5s}.reveal-delay-6{transition-delay:.6s}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.25rem 0;transition:all .4s var(--ease);background:transparent}
+nav.scrolled{background:rgba(26,26,46,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:.8rem 0;box-shadow:0 1px 40px rgba(0,0,0,.18)}
+nav .container{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--white)}
+.nav-logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--gold),var(--gold-light));border-radius:8px;display:grid;place-items:center;font-weight:700;font-size:.6rem;color:var(--charcoal);font-family:var(--mono);letter-spacing:-.02em}
+.nav-logo-text{font-weight:600;font-size:1.05rem}.nav-logo-text span{font-weight:400;color:rgba(255,255,255,.5);font-size:.72rem;margin-left:.3rem}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.86rem;font-weight:500;letter-spacing:.02em;transition:color .3s;position:relative}
+.nav-links a:hover{color:var(--white)}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--gold);transition:width .3s var(--ease)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--gold)!important;color:var(--charcoal)!important;padding:.55rem 1.4rem;border-radius:6px;font-weight:600;font-size:.85rem;transition:all .3s!important}
+.nav-cta::after{display:none!important}.nav-cta:hover{background:var(--gold-light)!important;transform:translateY(-1px)}
+.mobile-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem}
+.mobile-toggle span{display:block;width:22px;height:2px;background:var(--white);margin:5px 0;border-radius:2px}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;background:var(--charcoal);position:relative;overflow:hidden;padding:8rem 0 6rem}
+.hero::before{content:'';position:absolute;top:-30%;right:-10%;width:700px;height:700px;background:radial-gradient(circle,rgba(201,160,80,.12) 0%,transparent 70%);border-radius:50%;animation:float 8s ease-in-out infinite}
+.hero::after{content:'';position:absolute;bottom:-20%;left:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(212,175,55,.06) 0%,transparent 70%);border-radius:50%;animation:float 10s ease-in-out infinite reverse}
+.hero-grid{position:absolute;inset:0;opacity:.025;background-image:linear-gradient(rgba(201,160,80,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(201,160,80,.5) 1px,transparent 1px);background-size:60px 60px}
+.hero .container{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.hero-content{max-width:580px}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(201,160,80,.1);border:1px solid rgba(201,160,80,.25);padding:.4rem 1rem;border-radius:100px;margin-bottom:2rem;animation:fadeUp .8s var(--ease) .2s both}
+.hero-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);position:relative}
+.hero-badge-dot::after{content:'';position:absolute;inset:-3px;border-radius:50%;border:1px solid var(--gold);animation:pulse-ring 2s infinite}
+.hero-badge span{font-size:.76rem;color:var(--gold);font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+.hero h1{font-family:var(--serif);font-size:clamp(2.4rem,4.5vw,3.6rem);color:var(--white);line-height:1.12;margin-bottom:1.5rem;animation:fadeUp .8s var(--ease) .4s both}
+.hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1.1rem;color:var(--g400);line-height:1.7;max-width:500px;margin-bottom:2.5rem;animation:fadeUp .8s var(--ease) .55s both}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .8s var(--ease) .7s both}
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--charcoal);padding:.9rem 2rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:.95rem;transition:all .3s var(--ease);border:none;cursor:pointer}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,160,80,.35)}
+.btn-primary svg{transition:transform .3s}.btn-primary:hover svg{transform:translateX(3px)}
+.btn-secondary{display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:var(--g300);padding:.9rem 2rem;border-radius:8px;text-decoration:none;font-weight:500;font-size:.95rem;border:1px solid rgba(255,255,255,.15);transition:all .3s}
+.btn-secondary:hover{border-color:rgba(201,160,80,.5);color:var(--gold-pale);background:rgba(201,160,80,.06)}
+.hero-visual{animation:fadeUp .8s var(--ease) .6s both;display:flex;justify-content:center}
+.hero-visual img{width:100%;max-width:520px;border-radius:16px;box-shadow:0 30px 80px rgba(0,0,0,.4),0 0 60px rgba(201,160,80,.08)}
+
+/* SECTIONS SHARED */
+.section-eyebrow{font-size:.73rem;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);font-weight:700;margin-bottom:1rem;display:flex;align-items:center;gap:.75rem}
+.section-eyebrow::before{content:'';width:32px;height:2px;background:var(--gold);border-radius:2px}
+.section-title{font-family:var(--serif);font-size:clamp(2rem,3.5vw,2.8rem);color:var(--g900);line-height:1.15;margin-bottom:1rem}
+.section-subtitle{font-size:1.02rem;color:var(--g500);max-width:600px;line-height:1.65;margin-bottom:3.5rem}
+
+/* PROBLEM */
+.problem{padding:7rem 0;background:var(--white)}
+.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.problem-card{background:var(--g50);border:1px solid var(--g200);border-radius:12px;padding:2rem;transition:all .4s var(--ease);position:relative;overflow:hidden}
+.problem-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light));transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.problem-card:hover::before{transform:scaleX(1)}.problem-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.06);border-color:transparent}
+.problem-icon{width:48px;height:48px;border-radius:12px;background:var(--gold-glow);display:grid;place-items:center;margin-bottom:1.2rem}
+.problem-icon svg{width:24px;height:24px;color:var(--gold)}
+.problem-card h3{font-weight:700;font-size:1.05rem;margin-bottom:.6rem;color:var(--g900)}
+.problem-card p{font-size:.87rem;color:var(--g500);line-height:1.6}
+
+/* SOLUTION */
+.solution{padding:7rem 0;background:var(--charcoal);position:relative;overflow:hidden}
+.solution::before{content:'';position:absolute;top:0;right:0;width:40%;height:100%;background:radial-gradient(ellipse at right,rgba(201,160,80,.06) 0%,transparent 70%)}
+.solution .section-eyebrow{color:var(--gold)}.solution .section-eyebrow::before{background:var(--gold)}
+.solution .section-title{color:var(--white)}.solution .section-subtitle{color:var(--g400)}
+.solution-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:2}
+.solution-text p{font-size:1rem;color:var(--g400);line-height:1.75;margin-bottom:1.2rem}
+.solution-text p strong{color:var(--gold-pale)}
+.solution-visual{display:flex;justify-content:center}
+.solution-graphic{width:280px;height:280px;border-radius:50%;border:2px solid rgba(201,160,80,.2);display:grid;place-items:center;position:relative;box-shadow:0 0 80px rgba(201,160,80,.08)}
+.solution-graphic::after{content:'';position:absolute;inset:20px;border-radius:50%;border:1px solid rgba(201,160,80,.1)}
+.solution-graphic-inner{text-align:center}
+.solution-graphic-inner .kiq-mark{font-family:var(--mono);font-weight:700;font-size:2.4rem;color:var(--gold);letter-spacing:-.03em}
+.solution-graphic-inner .kiq-sub{font-size:.7rem;color:var(--g400);text-transform:uppercase;letter-spacing:.15em;margin-top:.3rem}
+
+/* FEATURES */
+.features{padding:7rem 0;background:var(--ivory)}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.5rem}
+.feature-card{background:var(--white);border:1px solid var(--g200);border-radius:14px;padding:2.2rem;transition:all .5s var(--ease);position:relative;overflow:hidden}
+.feature-card::after{content:'';position:absolute;inset:0;border-radius:14px;background:linear-gradient(135deg,rgba(201,160,80,.06),transparent 60%);opacity:0;transition:opacity .5s}
+.feature-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 12px 40px rgba(201,160,80,.08)}.feature-card:hover::after{opacity:1}
+.feature-card>*{position:relative;z-index:2}
+.feature-icon{width:52px;height:52px;border-radius:12px;background:var(--gold-glow);display:grid;place-items:center;margin-bottom:1.2rem}
+.feature-icon svg{width:26px;height:26px;color:var(--gold)}
+.feature-card h3{font-weight:700;font-size:1.15rem;margin-bottom:.7rem;color:var(--g900)}
+.feature-card p{color:var(--g500);font-size:.87rem;line-height:1.65}
+
+/* JOURNEY */
+.journey{padding:7rem 0;background:var(--white)}
+.journey-flow{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;margin-top:1rem}
+.journey-step{text-align:center;padding:1.5rem 1.2rem;position:relative;flex:1;min-width:150px}
+.journey-step-icon{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:grid;place-items:center;margin:0 auto 1rem;box-shadow:0 6px 20px rgba(201,160,80,.2);transition:transform .3s var(--ease)}
+.journey-step:hover .journey-step-icon{transform:scale(1.1)}
+.journey-step-icon svg{width:24px;height:24px;color:var(--charcoal)}
+.journey-step h4{font-weight:700;font-size:.88rem;color:var(--g800);margin-bottom:.3rem}
+.journey-step p{font-size:.75rem;color:var(--g400)}
+.journey-arrow{color:var(--gold);flex-shrink:0;opacity:.5}
+
+/* IMPACT */
+.impact{padding:7rem 0;background:var(--charcoal);position:relative;overflow:hidden}
+.impact::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0v60M0 30h60' stroke='%23C9A050' stroke-width='0.3' opacity='0.06'/%3E%3C/svg%3E")}
+.impact .section-eyebrow{color:var(--gold)}.impact .section-eyebrow::before{background:var(--gold)}
+.impact .section-title{color:var(--white)}.impact .section-subtitle{color:var(--g400)}
+.impact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;position:relative;z-index:2}
+.impact-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:2rem;transition:all .4s var(--ease);display:flex;gap:1.2rem;align-items:flex-start}
+.impact-card:hover{border-color:rgba(201,160,80,.3);transform:translateY(-3px);background:rgba(201,160,80,.04)}
+.impact-card-icon{width:44px;height:44px;border-radius:10px;background:rgba(201,160,80,.12);display:grid;place-items:center;flex-shrink:0}
+.impact-card-icon svg{width:22px;height:22px;color:var(--gold)}
+.impact-card h3{color:var(--white);font-weight:700;font-size:1rem;margin-bottom:.4rem}
+.impact-card p{color:var(--g400);font-size:.85rem;line-height:1.6}
+
+/* INTEGRATIONS */
+.integrations{padding:7rem 0;background:var(--ivory)}
+.integration-visual{display:flex;justify-content:center;align-items:center;gap:1.5rem;flex-wrap:wrap;margin-top:3rem}
+.int-node{background:var(--white);border:1px solid var(--g200);border-radius:12px;padding:1.1rem 1.6rem;text-align:center;transition:all .3s var(--ease);min-width:150px}
+.int-node:hover{border-color:var(--gold);background:var(--cream);transform:scale(1.04)}
+.int-node-name{font-weight:700;font-size:.86rem;color:var(--g800)}.int-node-sub{font-size:.7rem;color:var(--g400);margin-top:.2rem}
+.int-center{background:var(--charcoal);color:var(--white);border:2px solid var(--gold);border-radius:50%;width:140px;height:140px;display:grid;place-items:center;text-align:center;box-shadow:0 0 50px rgba(201,160,80,.2)}
+.int-center-text{font-weight:700;font-size:.92rem;line-height:1.2}.int-center-text small{display:block;font-weight:400;font-size:.6rem;color:var(--gold);margin-top:.3rem}
+
+/* POWERED BY */
+.powered-by{padding:6rem 0;background:var(--charcoal);position:relative;overflow:hidden}
+.powered-by::before{content:'\201C';position:absolute;top:.5rem;left:5%;font-family:var(--serif);font-size:18rem;color:rgba(201,160,80,.03);line-height:1}
+.powered-inner{max-width:800px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.powered-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(201,160,80,.1);border:1px solid rgba(201,160,80,.2);border-radius:100px;padding:.35rem 1rem;margin-bottom:1.5rem}
+.powered-badge span{font-size:.72rem;color:var(--gold);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.powered-inner h2{font-family:var(--serif);font-size:1.8rem;color:var(--white);margin-bottom:1.2rem;line-height:1.3}
+.powered-inner p{font-size:1rem;color:var(--g400);line-height:1.75;margin-bottom:1rem}.powered-inner p strong{color:var(--gold-pale)}
+.powered-products{display:flex;justify-content:center;gap:1.5rem;margin-top:2rem;flex-wrap:wrap}
+.powered-product{display:flex;align-items:center;gap:.6rem;padding:.8rem 1.5rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;text-decoration:none;transition:all .3s var(--ease)}
+.powered-product:hover{border-color:rgba(201,160,80,.3);background:rgba(201,160,80,.06);transform:translateY(-2px)}
+.pp-icon{width:34px;height:34px;border-radius:7px;display:grid;place-items:center;font-family:var(--mono);font-size:.55rem;font-weight:700;color:var(--white)}
+.pp-icon.gold{background:linear-gradient(135deg,var(--gold),var(--gold-light))}.pp-icon.teal{background:linear-gradient(135deg,#0D9488,#14B8A6)}
+.pp-text{text-align:left}.pp-text strong{display:block;color:var(--white);font-size:.9rem;font-weight:700}.pp-text span{font-size:.7rem;color:var(--g500)}
+
+/* CTA */
+.cta{padding:8rem 0;background:var(--cream);text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;top:50%;left:50%;width:600px;height:600px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(201,160,80,.08),transparent 70%);border-radius:50%}
+.cta .container{position:relative;z-index:2}
+.cta h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);color:var(--g900);margin-bottom:1rem}
+.cta p{font-size:1.02rem;color:var(--g500);margin-bottom:2.5rem;max-width:520px;margin-inline:auto;line-height:1.6}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.cta .btn-secondary{color:var(--g600);border-color:var(--g300)}.cta .btn-secondary:hover{color:var(--g800);border-color:var(--gold);background:var(--white)}
+
+/* FOOTER */
+footer{background:var(--deep);padding:4rem 0 2rem;color:var(--g400)}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.footer-brand p{font-size:.85rem;line-height:1.6;max-width:280px;color:var(--g500);margin-top:1rem}
+.footer-logo-wrap{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--white)}
+.f-icon{width:30px;height:30px;border-radius:6px;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:grid;place-items:center;font-family:var(--mono);font-size:.5rem;font-weight:700;color:var(--charcoal)}
+.f-text{font-weight:600;font-size:.95rem;color:var(--white)}
+.footer-col h4{color:var(--white);font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1.2rem}
+.footer-col a{display:block;color:var(--g500);text-decoration:none;font-size:.85rem;margin-bottom:.7rem;transition:color .3s}.footer-col a:hover{color:var(--gold)}
+.footer-bottom{padding-top:2rem;display:flex;justify-content:space-between;align-items:center;font-size:.76rem;color:var(--g600)}
+.footer-bottom-links{display:flex;gap:1.5rem}.footer-bottom-links a{color:var(--g600);text-decoration:none;transition:color .3s}.footer-bottom-links a:hover{color:var(--g400)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero .container{grid-template-columns:1fr}.hero-visual{margin-top:3rem}
+  .solution-inner{grid-template-columns:1fr}.solution-visual{margin-top:2rem}
+  .footer-top{grid-template-columns:1fr 1fr;gap:2rem}
+}
+@media(max-width:768px){
+  .nav-links{display:none}.mobile-toggle{display:block}
+  .problem-grid{grid-template-columns:1fr}
+  .features-grid{grid-template-columns:1fr}
+  .impact-grid{grid-template-columns:1fr}
+  .journey-flow{flex-direction:column}.journey-arrow{transform:rotate(90deg)}
+  .footer-top{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:1rem;text-align:center}
+  .integration-visual{gap:1rem}.int-center{width:110px;height:110px}
+  .hero-visual img{max-width:100%}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav"><div class="container">
+  <a href="../" class="nav-logo"><div class="nav-logo-icon">KIQ</div><span class="nav-logo-text">KaratIQ <span>by Happy Fly</span></span></a>
+  <div class="nav-links">
+    <a href="../">Home</a><a href="#features">Features</a><a href="#impact">Why KaratIQ</a><a href="#integrations">Integrations</a><a href="#about">Company</a>
+    <a href="#contact" class="nav-cta">Book a Demo</a>
+  </div>
+  <button class="mobile-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+
+<!-- HERO -->
+<section class="hero"><div class="hero-grid"></div><div class="container">
+  <div class="hero-content">
+    <div class="hero-badge"><div class="hero-badge-dot"></div><span>AI-Powered Jewellery Commerce</span></div>
+    <h1>KaratIQ — The AI Commerce Platform for <em>Jewellery Retail</em></h1>
+    <p class="hero-sub">Transform how customers discover, try, and buy jewellery online. Virtual try-ons, intelligent recommendations, and visual search — all in one platform.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Request Demo <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="#features" class="btn-secondary">See How It Works</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <img src="hero-mockup.png" alt="KaratIQ AI-powered jewellery shopping interface with virtual try-on and recommendations">
+  </div>
+</div></section>
+
+<!-- PROBLEM -->
+<section class="problem" id="problem"><div class="container">
+  <div class="section-eyebrow reveal">The Challenge</div>
+  <h2 class="section-title reveal reveal-delay-1">Jewellery Retail is Changing</h2>
+  <p class="section-subtitle reveal reveal-delay-2">Customers discover jewellery on Instagram, Pinterest, and Google — but most jewellery stores still lack intelligent digital tools. The gap is growing.</p>
+  <div class="problem-grid">
+    <div class="problem-card reveal reveal-delay-1">
+      <div class="problem-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+      <h3>Discovery Has Shifted Online</h3>
+      <p>70% of jewellery buyers start their journey on social media and search engines. Without AI-powered discovery, retailers miss these high-intent shoppers.</p>
+    </div>
+    <div class="problem-card reveal reveal-delay-2">
+      <div class="problem-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg></div>
+      <h3>No Way to "Try" Online</h3>
+      <p>Jewellery is deeply personal. Without virtual try-on, online shoppers can't visualize how pieces look on them — leading to hesitation and abandoned carts.</p>
+    </div>
+    <div class="problem-card reveal reveal-delay-3">
+      <div class="problem-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+      <h3>No Intelligent Guidance</h3>
+      <p>Customers can't ask "Gold necklace under ₹50,000" and get instant answers. Traditional catalogues lack the conversational, personalized shopping experience they expect.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- SOLUTION -->
+<section class="solution" id="solution"><div class="container">
+  <div class="solution-inner">
+    <div class="solution-text">
+      <div class="section-eyebrow reveal">The Platform</div>
+      <h2 class="section-title reveal reveal-delay-1">Meet KaratIQ</h2>
+      <p class="reveal reveal-delay-2"><strong>KaratIQ</strong> adds an intelligent AI layer to jewellery retail — turning every customer interaction into a personalized, engaging shopping experience.</p>
+      <p class="reveal reveal-delay-3">From the moment a shopper arrives, KaratIQ understands their preferences, shows them relevant pieces, lets them virtually try on jewellery, and guides them to purchase — just like the best in-store experience, but online and at scale.</p>
+      <p class="reveal reveal-delay-4">Built for jewellery retailers who want to compete with the biggest brands in the market — without needing a massive tech team.</p>
+    </div>
+    <div class="solution-visual reveal reveal-delay-3">
+      <div class="solution-graphic">
+        <div class="solution-graphic-inner">
+          <div class="kiq-mark">KIQ</div>
+          <div class="kiq-sub">AI Commerce Engine</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- FEATURES -->
+<section class="features" id="features"><div class="container">
+  <div class="section-eyebrow reveal">Capabilities</div>
+  <h2 class="section-title reveal reveal-delay-1">AI Tools That Transform<br>Jewellery Shopping</h2>
+  <p class="section-subtitle reveal reveal-delay-2">Five powerful AI modules — each designed to make jewellery shopping effortless, engaging, and conversion-friendly.</p>
+  <div class="features-grid">
+    <div class="feature-card reveal reveal-delay-1">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+      <h3>Virtual Try-On</h3>
+      <p>Customers can try rings, necklaces, and earrings directly using their phone camera. Real-time AR overlays let them see exactly how each piece looks — driving confidence and reducing returns.</p>
+    </div>
+    <div class="feature-card reveal reveal-delay-2">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+      <h3>AI Shopping Assistant</h3>
+      <p>Customers ask questions like "Gold necklace under ₹50,000" and receive instant, curated recommendations. A conversational AI that knows your catalogue inside out.</p>
+    </div>
+    <div class="feature-card reveal reveal-delay-3">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+      <h3>Photo Search Jewellery</h3>
+      <p>Upload an image — from Instagram, Pinterest, or a photo — and find visually similar jewellery designs from your catalogue. AI-powered visual search that converts inspiration into purchase.</p>
+    </div>
+    <div class="feature-card reveal reveal-delay-4">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+      <h3>Face-Based Recommendation</h3>
+      <p>AI analyzes face shape and suggests the best-matching jewellery styles — the perfect earring shape, necklace length, or headpiece design for every unique face.</p>
+    </div>
+    <div class="feature-card reveal reveal-delay-5">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+      <h3>AI Budget Builder</h3>
+      <p>Customers enter a budget and occasion — AI generates a complete, coordinated jewellery set within their price range. Smart upselling that feels like expert curation.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- CUSTOMER JOURNEY -->
+<section class="journey" id="journey"><div class="container" style="text-align:center">
+  <div class="section-eyebrow reveal" style="justify-content:center">The Experience</div>
+  <h2 class="section-title reveal reveal-delay-1">From Inspiration to Purchase</h2>
+  <p class="section-subtitle reveal reveal-delay-2" style="margin-inline:auto">KaratIQ guides every customer through a seamless, AI-powered journey from first spark to final purchase.</p>
+  <div class="journey-flow reveal reveal-delay-3">
+    <div class="journey-step">
+      <div class="journey-step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+      <h4>Inspiration</h4>
+      <p>Customer sees a piece they love</p>
+    </div>
+    <svg class="journey-arrow" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    <div class="journey-step">
+      <div class="journey-step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+      <h4>AI Discovery</h4>
+      <p>Visual search finds similar designs</p>
+    </div>
+    <svg class="journey-arrow" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    <div class="journey-step">
+      <div class="journey-step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+      <h4>Virtual Try-On</h4>
+      <p>See it on yourself in real-time</p>
+    </div>
+    <svg class="journey-arrow" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    <div class="journey-step">
+      <div class="journey-step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      <h4>Recommendation</h4>
+      <p>AI suggests perfect matches</p>
+    </div>
+    <svg class="journey-arrow" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    <div class="journey-step">
+      <div class="journey-step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+      <h4>Purchase</h4>
+      <p>Confident, informed checkout</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- BUSINESS IMPACT -->
+<section class="impact" id="impact"><div class="container">
+  <div class="section-eyebrow reveal">For Retailers</div>
+  <h2 class="section-title reveal reveal-delay-1">Why Jewellery Retailers<br>Choose KaratIQ</h2>
+  <p class="section-subtitle reveal reveal-delay-2">Measurable business results from day one — whether you're a boutique jeweller or a multi-store brand.</p>
+  <div class="impact-grid">
+    <div class="impact-card reveal reveal-delay-1">
+      <div class="impact-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+      <div><h3>Higher Online Conversions</h3><p>Virtual try-on and AI recommendations remove uncertainty — turning browsers into buyers.</p></div>
+    </div>
+    <div class="impact-card reveal reveal-delay-2">
+      <div class="impact-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+      <div><h3>Faster Purchase Decisions</h3><p>AI guidance cuts the consideration phase dramatically. Customers find what they want faster.</p></div>
+    </div>
+    <div class="impact-card reveal reveal-delay-3">
+      <div class="impact-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+      <div><h3>Higher Average Order Value</h3><p>AI Budget Builder and intelligent recommendations encourage customers to complete sets and explore premium options.</p></div>
+    </div>
+    <div class="impact-card reveal reveal-delay-4">
+      <div class="impact-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div><h3>Premium Digital Experience</h3><p>Give your brand the same digital sophistication as Tanishq, CaratLane, and global luxury houses.</p></div>
+    </div>
+    <div class="impact-card reveal reveal-delay-5">
+      <div class="impact-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <div><h3>Compete With Large Brands</h3><p>Access the same AI capabilities that billion-dollar jewellery brands use — at a fraction of the cost.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- INTEGRATIONS -->
+<section class="integrations" id="integrations"><div class="container" style="text-align:center">
+  <div class="section-eyebrow reveal" style="justify-content:center">Compatibility</div>
+  <h2 class="section-title reveal reveal-delay-1">Works With Your<br>Existing Systems</h2>
+  <p class="section-subtitle reveal reveal-delay-2" style="margin-inline:auto">KaratIQ plugs into the tools you already use — no rip-and-replace required. Seamless integration, immediate value.</p>
+  <div class="integration-visual reveal reveal-delay-3">
+    <div class="int-node"><div class="int-node-name">Shopify / WooCommerce</div><div class="int-node-sub">Ecommerce Platforms</div></div>
+    <div class="int-node"><div class="int-node-name">Catalogue Manager</div><div class="int-node-sub">Product Data</div></div>
+    <div class="int-node"><div class="int-node-name">CRM Systems</div><div class="int-node-sub">Customer Data</div></div>
+    <div class="int-center"><div class="int-center-text">KaratIQ<small>AI Commerce Engine</small></div></div>
+    <div class="int-node"><div class="int-node-name">WhatsApp Business</div><div class="int-node-sub">Commerce Channel</div></div>
+    <div class="int-node"><div class="int-node-name">In-Store Kiosks</div><div class="int-node-sub">Digital Experience</div></div>
+    <div class="int-node"><div class="int-node-name">Payment Gateways</div><div class="int-node-sub">Razorpay / Stripe</div></div>
+  </div>
+</div></section>
+
+<!-- POWERED BY -->
+<section class="powered-by" id="about"><div class="container"><div class="powered-inner reveal">
+  <div class="powered-badge"><span>The Company Behind KaratIQ</span></div>
+  <h2>Built by Happy Fly Consultancy</h2>
+  <p><strong>Happy Fly Consultancy</strong> is a technology consultancy specializing in digital transformation. We design, build, and deploy AI-powered platforms that help businesses deliver world-class customer experiences.</p>
+  <p>KaratIQ is our commerce platform for the jewellery industry — joining <strong>Atithi OS</strong>, our intelligent hospitality operating system, in the Happy Fly product family.</p>
+  <div class="powered-products">
+    <a href="./" class="powered-product"><div class="pp-icon gold">KIQ</div><div class="pp-text"><strong>KaratIQ</strong><span>AI Jewellery Commerce</span></div></a>
+    <a href="../athitios/" class="powered-product"><div class="pp-icon teal">AO</div><div class="pp-text"><strong>Atithi OS</strong><span>Hospitality Platform</span></div></a>
+  </div>
+</div></div></section>
+
+<!-- CTA -->
+<section class="cta" id="contact"><div class="container">
+  <div class="section-eyebrow reveal" style="justify-content:center">Get Started</div>
+  <h2 class="reveal reveal-delay-1">Bring AI-Powered Shopping<br>to Your Jewellery Store</h2>
+  <p class="reveal reveal-delay-2">See KaratIQ in action with a personalized demo. No commitment — just a conversation about what's possible for your business.</p>
+  <div class="cta-actions reveal reveal-delay-3">
+    <a href="mailto:hello@happyflyconsultancy.com?subject=KaratIQ Demo Request" class="btn-primary">Book a Demo <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <a href="mailto:hello@happyflyconsultancy.com" class="btn-secondary">Contact Us</a>
+  </div>
+</div></section>
+
+<!-- FOOTER -->
+<footer><div class="container">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="./" class="footer-logo-wrap"><div class="f-icon">KIQ</div><span class="f-text">KaratIQ</span></a>
+      <p>AI-powered commerce platform for jewellery retailers. Built by Happy Fly Consultancy.</p>
+    </div>
+    <div class="footer-col"><h4>Products</h4><a href="./">KaratIQ</a><a href="../athitios/">Atithi OS</a><a href="../">Happy Fly Home</a></div>
+    <div class="footer-col"><h4>KaratIQ</h4><a href="#features">Virtual Try-On</a><a href="#features">AI Assistant</a><a href="#features">Photo Search</a><a href="#features">Budget Builder</a></div>
+    <div class="footer-col"><h4>Company</h4><a href="#about">About Happy Fly</a><a href="mailto:hello@happyflyconsultancy.com">Contact</a><a href="#">Careers</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Happy Fly Consultancy. KaratIQ is a product of Happy Fly Consultancy.</span>
+    <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+  </div>
+</div></footer>
+
+<script>
+const observer=new IntersectionObserver(e=>{e.forEach(t=>{if(t.isIntersecting)t.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+const nav=document.getElementById('nav');let ticking=false;
+window.addEventListener('scroll',()=>{if(!ticking){window.requestAnimationFrame(()=>{nav.classList.toggle('scrolled',window.scrollY>60);ticking=false});ticking=true}});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}})});
+</script>
+</body>
+</html>
