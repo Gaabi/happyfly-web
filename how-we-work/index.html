@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How We Work — Happy Fly | Pragmatic Delivery</title>
+  <meta name="description"
+    content="Our four-stage engagement process: Discover, Identify, Build, and Deploy. How Happy Fly turns business problems into practical AI and technology solutions.">
+  <meta property="og:title" content="How We Work — Happy Fly | Pragmatic Delivery">
+  <meta property="og:description"
+    content="Our four-stage engagement process: Discover, Identify, Build, and Deploy. How Happy Fly turns business problems into practical AI and technology solutions.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../assets/brand/og-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="../assets/brand/og-preview.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/brand/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/brand/apple-touch-icon.png">
+  <link rel="shortcut icon" href="../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+
+  <style>
+    /* HOW WE WORK PAGE STYLES */
+    .timeline-container {
+      display: flex;
+      flex-direction: column;
+      gap: 3.5rem;
+      margin-bottom: 6rem;
+      position: relative;
+    }
+
+    .timeline-stage {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 3rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2.5rem;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .timeline-stage:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+
+    .stage-indicator {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      border-right: 1px solid var(--border-subtle);
+      padding-right: 2rem;
+    }
+
+    .stage-number {
+      font-family: var(--font-mono);
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1;
+      color: rgba(255, 255, 255, 0.2);
+      margin-bottom: 0.75rem;
+    }
+
+    .stage-name {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: var(--text-white);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+    }
+
+    .stage-duration {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .stage-details h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 0.85rem;
+    }
+
+    .stage-details p {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 1.75rem;
+    }
+
+    .stage-deliverables {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.85rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .deliverable-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.88rem;
+      color: var(--text-main);
+    }
+
+    .deliverable-item svg {
+      width: 16px;
+      height: 16px;
+      color: var(--accent-teal);
+      flex-shrink: 0;
+    }
+
+    /* PRINCIPLES SECTION */
+    .principles-box {
+      background: #0A0C13;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: 4rem 3rem;
+      margin-bottom: 6rem;
+    }
+
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.25rem;
+      margin-top: 2.5rem;
+    }
+
+    .principle-item h4 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 0.5rem;
+    }
+
+    .principle-item p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .timeline-stage {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+        padding: 2.25rem 1.75rem;
+      }
+      .stage-indicator {
+        border-right: none;
+        border-bottom: 1px solid var(--border-subtle);
+        padding-right: 0;
+        padding-bottom: 1.5rem;
+      }
+      .stage-deliverables {
+        grid-template-columns: 1fr;
+      }
+      .principles-grid {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+      }
+      .principles-box {
+        padding: 2.5rem 1.75rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- GLOBAL NAVIGATION -->
+  <nav id="navbar">
+    <div class="container">
+      <a href="../" class="nav-brand">
+        <img src="../assets/brand/logo-mark-64.png" alt="Happy Fly Logo" class="nav-brand-logo-mark" width="40" height="40">
+        <div class="nav-brand-title">
+          HAPPY FLY
+          <span class="nav-brand-subtitle">AI Solutions &amp; Consultancy</span>
+        </div>
+      </a>
+
+      <div class="nav-menu">
+        <a href="../solutions/" class="nav-link">Solutions</a>
+        <!-- [PRESERVED: <a href="../products/" class="nav-link">Products</a>] -->
+        <a href="../how-we-work/" class="nav-link active">How We Work</a>
+        <a href="../about/" class="nav-link">About</a>
+        <a href="../contact/" class="btn btn-primary nav-cta">Talk to Us</a>
+      </div>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <a href="../solutions/" class="nav-link mobile-link">Solutions</a>
+    <!-- [PRESERVED: <a href="../products/" class="nav-link mobile-link">Products</a>] -->
+    <a href="../how-we-work/" class="nav-link mobile-link">How We Work</a>
+    <a href="../about/" class="nav-link mobile-link">About</a>
+    <a href="../contact/" class="btn btn-primary mobile-link">Talk to Us</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="page-hero-glow"></div>
+    <div class="container">
+      <span class="section-eyebrow">Pragmatic Execution</span>
+      <h1>How We Work</h1>
+      <p>
+        We believe enterprise technology projects fail when they begin with buzzwords instead of business reality. Here is our straightforward, four-stage framework for turning business problems into working solutions.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOUR STAGE PROCESS -->
+  <section style="padding: 2rem 0 3rem;">
+    <div class="container">
+      <div class="timeline-container">
+
+        <!-- STAGE 01: DISCOVER -->
+        <div class="timeline-stage">
+          <div class="stage-indicator">
+            <div class="stage-number">01</div>
+            <div class="stage-name">Discover</div>
+            <div class="stage-duration">Stage 01</div>
+          </div>
+          <div class="stage-details">
+            <h3>Understand the Business Problem</h3>
+            <p>
+              We start by listening to your team's day-to-day pain points, operational delays, and commercial objectives. You don't need a formal technical spec. We look at the actual workflow, examine existing software, and pinpoint where time or revenue is leaking.
+            </p>
+            <div class="stage-deliverables">
+              <div class="deliverable-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Workflow &amp; bottleneck mapping
+              </div>
+              <div class="deliverable-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Identification of key cost drivers
+              </div>
+              <div class="deliverable-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Zero technical jargon required from your team
+              </div>
+              <div class="deliverable-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Clear business outcome definition
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STAGE 02: IDENTIFY -->
+        <div class="timeline-stage">
+          <div class="stage-indicator">
+            <div class="stage-number">02</div>
+            <div class="stage-name">Identify</div>
+            <div class="stage-duration">Stage 02</div>
+          </div>
+          <div class="stage-details">
+            <h3>Find Where Technology &amp; AI Can Actually Help</h3>
+            <p>
+              We objectively evaluate what technical tool solves the problem with the highest ROI and least operational complexity. If a clean database or standard automation script solves your problem faster and cheaper than an LLM, we tell you upfront. We never force AI where simpler tech is superior.
+            </p>
+            <div class="stage-deliverables">
+              <div class="deliverable-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Pragmatic tech assessment (AI vs automation vs software)
+              </div>
+              <div class="deliverable-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Architecture &amp; data privacy roadmap
+              </div>
+              <div class="deliverable-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Feasibility &amp; ROI projection
+              </div>
+              <div class="deliverable-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Transparent milestone-based quote
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STAGE 03: BUILD -->
+        <div class="timeline-stage">
+          <div class="stage-indicator">
+            <div class="stage-number">03</div>
+            <div class="stage-name">Build</div>
+            <div class="stage-duration">Stage 03</div>
+          </div>
+          <div class="stage-details">
+            <h3>Design and Develop the Solution</h3>
+            <p>
+              Our engineers build the solution in fast, transparent iterations. We create working prototypes early so your team can test actual software rather than reviewing theoretical slide decks. We refine the user experience with human feedback continuously.
+            </p>
+            <div class="stage-deliverables">
+              <div class="deliverable-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Interactive working prototype in early sprints
+              </div>
+              <div class="deliverable-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Full-stack frontend &amp; backend engineering
+              </div>
+              <div class="deliverable-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Model fine-tuning &amp; evaluation against benchmarks
+              </div>
+              <div class="deliverable-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Weekly demo reviews and status check-ins
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STAGE 04: DEPLOY -->
+        <div class="timeline-stage">
+          <div class="stage-indicator">
+            <div class="stage-number">04</div>
+            <div class="stage-name">Deploy</div>
+            <div class="stage-duration">Stage 04</div>
+          </div>
+          <div class="stage-details">
+            <h3>Integrate Into the Business and Launch</h3>
+            <p>
+              We hook the new system into your daily environment — connecting it to ERPs, CRMs, internal databases, or cloud infrastructure. We conduct thorough security testing, train your team, monitor accuracy in production, and provide ongoing refinement.
+            </p>
+            <div class="stage-deliverables">
+              <div class="deliverable-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Seamless integration with your existing stack
+              </div>
+              <div class="deliverable-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Bank-grade data isolation &amp; security validation
+              </div>
+              <div class="deliverable-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Staff onboarding &amp; operational training
+              </div>
+              <div class="deliverable-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Continuous performance monitoring &amp; support
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- PRINCIPLES OF COLLABORATION -->
+      <div class="principles-box">
+        <span class="section-eyebrow teal">Collaboration Standards</span>
+        <h2 style="font-size: clamp(1.8rem, 3.2vw, 2.5rem); font-weight: 800; color: var(--text-white); letter-spacing:-0.02em;">
+          What You Can Expect When Working With Us
+        </h2>
+
+        <div class="principles-grid">
+          <div class="principle-item">
+            <h4>No Technology Jargon</h4>
+            <p>We speak in business outcomes: time saved, errors avoided, revenue generated, and operational agility gained.</p>
+          </div>
+          <div class="principle-item">
+            <h4>Transparent Milestones</h4>
+            <p>No black-box development. You know exactly what is being built, when it will be delivered, and how it works.</p>
+          </div>
+          <div class="principle-item">
+            <h4>Honest Feasibility</h4>
+            <p>If an AI tool is unreliable or over-engineered for your problem, we tell you frankly and propose a simpler alternative.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA BANNER -->
+      <div class="final-cta-card">
+        <span class="section-eyebrow" style="color:var(--text-white); margin-bottom: 0.75rem;">Get Started</span>
+        <h2>Bring us your business problem.</h2>
+        <p>
+          We'll review your current situation, determine whether AI or automation can help, and map out a clear path forward.
+        </p>
+        <div class="final-cta-actions">
+          <a href="../contact/" class="btn btn-primary" style="padding:1rem 2.25rem; font-size:1.05rem">
+            Talk to Us &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../" class="nav-brand">
+            <img src="../assets/brand/logo-mark-64.png" alt="Happy Fly Logo" class="nav-brand-logo-mark" width="40" height="40">
+            <div class="nav-brand-title">
+              HAPPY FLY
+              <span class="nav-brand-subtitle">AI Solutions &amp; Consultancy</span>
+            </div>
+          </a>
+          <p>
+            Happy Fly helps businesses identify, design and build practical AI solutions around real business problems. Custom AI consultancy, intelligent automation, and software engineering.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="../solutions/">Solutions</a></li>
+            <!-- [PRESERVED: <li><a href="../products/">Products</a></li>] -->
+            <li><a href="../how-we-work/">How We Work</a></li>
+            <li><a href="../about/">About</a></li>
+            <li><a href="../contact/">Talk to Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Capabilities</h4>
+          <ul class="footer-links">
+            <li><a href="../solutions/">AI Strategy &amp; Discovery</a></li>
+            <li><a href="../solutions/">Intelligent Automation</a></li>
+            <li><a href="../solutions/">Custom AI Applications</a></li>
+            <li><a href="../solutions/">Enterprise Integration</a></li>
+          </ul>
+        </div>
+        <!-- [PRESERVED:
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul class="footer-links">
+            <li><a href="../karatIQ/">KaratIQ</a></li>
+            <li><a href="../athitios/">Atithi OS</a></li>
+          </ul>
+        </div>
+        ]-->
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:hello@happyflyconsultancy.com">hello@happyflyconsultancy.com</a></li>
+            <li><a href="../contact/">Schedule Consultation</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Happy Fly. All rights reserved.</div>
+        <div style="display:flex; gap:1.5rem">
+          <a href="../privacy/" style="color:var(--text-dim); text-decoration:none">Privacy Policy</a>
+          <a href="../terms/" style="color:var(--text-dim); text-decoration:none">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    if (mobileToggle && mobileDrawer) {
+      mobileToggle.addEventListener('click', () => {
+        const isOpen = mobileDrawer.classList.toggle('open');
+        mobileToggle.classList.toggle('active', isOpen);
+        mobileToggle.setAttribute('aria-expanded', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      });
+      document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileDrawer.classList.remove('open');
+          mobileToggle.classList.remove('active');
+          mobileToggle.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        });
+      });
+    }
+  </script>
+</body>
+</html>

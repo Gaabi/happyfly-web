@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solutions — Happy Fly | AI Solutions &amp; Consultancy</title>
+  <meta name="description"
+    content="Custom AI, automation, and software solutions designed and built around your company's specific workflow or problem. Built for your business by Happy Fly.">
+  <meta property="og:title" content="Solutions — Happy Fly | AI Solutions &amp; Consultancy">
+  <meta property="og:description"
+    content="Custom AI, automation, and software solutions designed and built around your company's specific workflow or problem. Built for your business by Happy Fly.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../assets/brand/og-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="../assets/brand/og-preview.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/brand/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/brand/apple-touch-icon.png">
+  <link rel="shortcut icon" href="../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+
+  <style>
+    /* SOLUTIONS PAGE SPECIFIC STYLES */
+    .page-hero .container {
+      max-width: 1050px;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(2rem, 4.3vw, 3.5rem);
+    }
+
+    @media (min-width: 860px) {
+      .page-hero h1 {
+        white-space: nowrap;
+      }
+    }
+
+    .solutions-deep-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      margin-bottom: 5rem;
+    }
+
+    .solution-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2.5rem;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .solution-block:hover {
+      border-color: var(--border-hover);
+      background: var(--bg-card-hover);
+    }
+
+    .sb-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1.75rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .sb-num {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.35rem;
+      display: block;
+    }
+
+    .sb-title {
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: var(--text-white);
+      letter-spacing: -0.02em;
+    }
+
+    .sb-badge {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      background: rgba(79, 117, 255, 0.1);
+      color: var(--accent-blue);
+      border: 1px solid rgba(79, 117, 255, 0.25);
+      white-space: nowrap;
+    }
+
+    .sb-content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .sb-section h4 {
+      font-size: 0.82rem;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+      margin-bottom: 0.75rem;
+    }
+
+    .sb-section p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .sb-usecases {
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .sb-usecases h4 {
+      font-size: 0.82rem;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+      margin-bottom: 1rem;
+    }
+
+    .usecases-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .usecase-pill {
+      font-size: 0.85rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.5rem 1rem;
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .usecase-pill svg {
+      width: 14px;
+      height: 14px;
+      color: var(--accent-teal);
+    }
+
+    /* UNSURE BANNER */
+    .unsure-banner {
+      background: linear-gradient(180deg, #10131E 0%, #0D0F18 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-xl);
+      padding: 4.5rem 3rem;
+      text-align: center;
+      margin-bottom: 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .unsure-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 20%;
+      right: 20%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+    }
+
+    .unsure-banner h2 {
+      font-size: clamp(2rem, 3.8vw, 2.8rem);
+      font-weight: 800;
+      color: var(--text-white);
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .unsure-banner p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 620px;
+      margin: 0 auto 2.25rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .sb-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+
+      .sb-content-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .solution-block {
+        padding: 2.25rem 1.75rem;
+      }
+
+      .unsure-banner {
+        padding: 3rem 1.75rem;
+      }
+    }
+
+    /* WHAT ARE YOU LOOKING TO SOLVE (2x2 GRID) */
+    .looking-to-solve-section {
+      padding: 5rem 0 5.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+      position: relative;
+    }
+
+    .lts-title {
+      text-align: center;
+      font-size: clamp(2.1rem, 3.8vw, 2.75rem);
+      font-weight: 800;
+      color: var(--text-white);
+      letter-spacing: -0.03em;
+      margin-bottom: 3.5rem;
+    }
+
+    .lts-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.75rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .lts-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 2.5rem 2.25rem 2.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 230px;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .lts-card:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(79, 117, 255, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.55), 0 0 24px rgba(79, 117, 255, 0.12);
+    }
+
+    .lts-card-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-white);
+      letter-spacing: -0.02em;
+      line-height: 1.35;
+      margin-bottom: 0.85rem;
+    }
+
+    .lts-category {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      margin-bottom: 2rem;
+    }
+
+    .lts-category svg {
+      width: 14px;
+      height: 14px;
+      color: var(--accent-blue);
+      flex-shrink: 0;
+    }
+
+    .lts-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: #3B82F6;
+      text-decoration: none;
+      transition: var(--transition);
+      margin-top: auto;
+    }
+
+    .lts-link:hover {
+      color: #60A5FA;
+      gap: 0.6rem;
+    }
+
+    .lts-bottom-cta {
+      text-align: center;
+    }
+
+    .lts-bottom-question {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .lts-bottom-link {
+      color: #3B82F6;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .lts-bottom-link:hover {
+      color: #60A5FA;
+      gap: 0.6rem;
+    }
+
+    @media (max-width: 768px) {
+      .lts-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+
+      .lts-card {
+        padding: 2rem 1.75rem;
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- GLOBAL NAVIGATION -->
+  <nav id="navbar">
+    <div class="container">
+      <a href="../" class="nav-brand">
+        <img src="../assets/brand/logo-mark-64.png" alt="Happy Fly Logo" class="nav-brand-logo-mark" width="40" height="40">
+        <div class="nav-brand-title">
+          HAPPY FLY
+          <span class="nav-brand-subtitle">AI Solutions &amp; Consultancy</span>
+        </div>
+      </a>
+
+      <div class="nav-menu">
+        <a href="../solutions/" class="nav-link active">Solutions</a>
+        <!-- [PRESERVED: <a href="../products/" class="nav-link">Products</a>] -->
+        <a href="../how-we-work/" class="nav-link">How We Work</a>
+        <a href="../about/" class="nav-link">About</a>
+        <a href="../contact/" class="btn btn-primary nav-cta">Talk to Us</a>
+      </div>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <a href="../solutions/" class="nav-link mobile-link">Solutions</a>
+    <!-- [PRESERVED: <a href="../products/" class="nav-link mobile-link">Products</a>] -->
+    <a href="../how-we-work/" class="nav-link mobile-link">How We Work</a>
+    <a href="../about/" class="nav-link mobile-link">About</a>
+    <a href="../contact/" class="btn btn-primary mobile-link">Talk to Us</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="page-hero-glow"></div>
+    <div class="container">
+      <span class="section-eyebrow">Custom AI Consultancy &amp; Engineering</span>
+      <h1>Solutions built for your business.</h1>
+      <p>
+        Build with experts who understand technology and business.
+      </p>
+
+      <div class="hero-actions" style="margin-top: 2rem; display: flex; justify-content: center;">
+        <a href="../contact/" class="btn btn-primary">
+          Get Your Free Consultation
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT ARE YOU LOOKING TO SOLVE? -->
+  <section class="looking-to-solve-section" id="looking-to-solve">
+    <div class="container">
+      <h2 class="lts-title">What Are You Looking to Solve?</h2>
+
+      <div class="lts-grid">
+        <!-- CARD 1 -->
+        <div class="lts-card">
+          <div>
+            <h3 class="lts-card-title">We want to find where AI can help our business</h3>
+            <div class="lts-category">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+              AI Opportunity Discovery
+            </div>
+          </div>
+          <a href="#use-cases" class="lts-link">Learn More &rarr;</a>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="lts-card">
+          <div>
+            <h3 class="lts-card-title">We need custom software built for our business</h3>
+            <div class="lts-category">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+              AI-Powered Software Development
+            </div>
+          </div>
+          <a href="#applications" class="lts-link">Learn More &rarr;</a>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="lts-card">
+          <div>
+            <h3 class="lts-card-title">We want to automate repetitive work</h3>
+            <div class="lts-category">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+              AI Agents &amp; Automation
+            </div>
+          </div>
+          <a href="#agents" class="lts-link">Learn More &rarr;</a>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="lts-card">
+          <div>
+            <h3 class="lts-card-title">We want to add AI to our existing systems</h3>
+            <div class="lts-category">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+              AI Integration
+            </div>
+          </div>
+          <a href="#integration" class="lts-link">Learn More &rarr;</a>
+        </div>
+      </div>
+
+      <div class="lts-bottom-cta">
+        <p class="lts-bottom-question">Not sure what you need?</p>
+        <a href="../contact/" class="lts-bottom-link">Let's figure it out together</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS DETAILED CAPABILITIES -->
+  <section style="padding: 5rem 0 5rem;">
+    <div class="container">
+      <div class="solutions-deep-grid">
+
+        <!-- 1. AI AUTOMATION / USE CASES -->
+        <div class="solution-block" id="use-cases">
+          <div class="sb-header">
+            <div>
+              <span class="sb-num">Category 01</span>
+              <h3 class="sb-title">AI Automation</h3>
+            </div>
+            <span class="sb-badge">Workflow Optimization</span>
+          </div>
+
+          <div class="sb-content-grid">
+            <div class="sb-section">
+              <h4>What It Does</h4>
+              <p>
+                Connects fragmented systems and orchestrates multi-step business processes with intelligent decision
+                logic. It handles approvals, document ingestion, data reconciliation, and handoffs automatically.
+              </p>
+            </div>
+            <div class="sb-section">
+              <h4>Business Problem It Solves</h4>
+              <p>
+                Eliminates the hours your team wastes on repetitive, manual data entry, human error in reporting, and
+                operational friction that causes costly turnaround delays.
+              </p>
+            </div>
+          </div>
+
+          <div class="sb-usecases">
+            <h4>Example Use Cases</h4>
+            <div class="usecases-pills">
+              <span class="usecase-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg> Automated invoice ingestion, validation &amp; ERP posting</span>
+              <span class="usecase-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg> Multi-vendor order processing &amp; catalog syncing</span>
+              <span class="usecase-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg> Automated compliance checks &amp; audit trail generation</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. AI AGENTS -->
+        <div class="solution-block" id="agents">
+          <div class="sb-header">
+            <div>
+              <span class="sb-num">Category 02</span>
+              <h3 class="sb-title">AI Agents</h3>
+            </div>
+            <span class="sb-badge">Autonomous Operations</span>
+          </div>
+
+          <div class="sb-content-grid">
+            <div class="sb-section">
+              <h4>What It Does</h4>
+              <p>
+                Deploys autonomous digital workers trained on your specific business rules, institutional knowledge, and
+                operational guidelines to research, communicate, and execute multi-step tasks.
+              </p>
+            </div>
+            <div class="sb-section">
+              <h4>Business Problem It Solves</h4>
+              <p>
+                Staff bottlenecks in customer service, slow turnaround times for complex client inquiries, and high
+                overhead costs of scaling administrative and support operations.
+              </p>
+            </div>
+          </div>
+
+          <div class="sb-usecases">
+            <h4>Example Use Cases</h4>
+            <div class="usecases-pills">
+              <span class="usecase-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg> 24/7 intelligent tier-1 &amp; tier-2 customer support agents</span>
+              <span class="usecase-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg> Lead qualification &amp; automatic calendar scheduling assistants</span>
+              <span class="usecase-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg> Internal operational task agents that query databases &amp; file reports</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. AI APPLICATIONS -->
+        <div class="solution-block" id="applications">
+          <div class="sb-header">
+            <div>
+              <span class="sb-num">Category 03</span>
+              <h3 class="sb-title">AI Applications</h3>
+            </div>
+            <span class="sb-badge">Custom Digital Products</span>
+          </div>
+
+          <div class="sb-content-grid">
+            <div class="sb-section">
+              <h4>What It Does</h4>
+              <p>
+                Designs and builds modern full-stack web and mobile software with machine intelligence deeply embedded
+                into the user interface and backend architecture from day one.
+              </p>
+            </div>
+            <div class="sb-section">
+              <h4>Business Problem It Solves</h4>
+              <p>
+                Enables companies to launch new digital business lines, replace outdated client portals, and offer
+                differentiated customer experiences that competitors cannot easily copy.
+              </p>
+            </div>
+          </div>
+
+          <div class="sb-usecases">
+            <h4>Example Use Cases</h4>
+            <div class="usecases-pills">
+              <span class="usecase-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg> Customer portals with dynamic personalized recommendations</span>
+              <span class="usecase-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg> Internal operational dashboards with intelligent anomaly detection</span>
+              <span class="usecase-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg> Interactive mobile apps with embedded visual or conversational AI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. AI INTEGRATION -->
+        <div class="solution-block" id="integration">
+          <div class="sb-header">
+            <div>
+              <span class="sb-num">Category 04</span>
+              <h3 class="sb-title">AI Integration</h3>
+            </div>
+            <span class="sb-badge">Legacy &amp; Ecosystem</span>
+          </div>
+
+          <div class="sb-content-grid">
+            <div class="sb-section">
+              <h4>What It Does</h4>
+              <p>
+                Injects intelligent capabilities into the software your company already depends on every day — including
+                SAP, Salesforce, custom ERPs, SQL databases, and internal APIs.
+              </p>
+            </div>
+            <div class="sb-section">
+              <h4>Business Problem It Solves</h4>
+              <p>
+                Prevents the massive expense, organizational disruption, and risk of ripping and replacing existing
+                software systems just to take advantage of modern AI capabilities.
+              </p>
+            </div>
+          </div>
+
+          <div class="sb-usecases">
+            <h4>Example Use Cases</h4>
+            <div class="usecases-pills">
+              <span class="usecase-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg> Natural language search across enterprise CRM &amp; ticketing tools</span>
+              <span class="usecase-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg> AI document summarization hooked directly into Microsoft 365 or Slack</span>
+              <span class="usecase-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg> Secure API middleware connecting legacy databases to modern LLMs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. DATA & ANALYTICS -->
+        <div class="solution-block">
+          <div class="sb-header">
+            <div>
+              <span class="sb-num">Category 05</span>
+              <h3 class="sb-title">Data &amp; Analytics</h3>
+            </div>
+            <span class="sb-badge">Decision Intelligence</span>
+          </div>
+
+          <div class="sb-content-grid">
+            <div class="sb-section">
+              <h4>What It Does</h4>
+              <p>
+                Cleans, aggregates, and transforms unstructured business data, PDFs, and siloed spreadsheets into clear
+                real-time dashboards, predictive models, and automated reporting feeds.
+              </p>
+            </div>
+            <div class="sb-section">
+              <h4>Business Problem It Solves</h4>
+              <p>
+                Solves data fragmentation where management has to wait days or weeks for manual reports, making timely,
+                high-conviction business decisions nearly impossible.
+              </p>
+            </div>
+          </div>
+
+          <div class="sb-usecases">
+            <h4>Example Use Cases</h4>
+            <div class="usecases-pills">
+              <span class="usecase-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg> Demand forecasting &amp; inventory replenishment planning</span>
+              <span class="usecase-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg> Executive intelligence summaries generated automatically every morning</span>
+              <span class="usecase-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg> Real-time customer churn risk alerts &amp; behavioral analytics</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. CUSTOM AI SOLUTIONS -->
+        <div class="solution-block">
+          <div class="sb-header">
+            <div>
+              <span class="sb-num">Category 06</span>
+              <h3 class="sb-title">Custom AI Solutions</h3>
+            </div>
+            <span class="sb-badge">Tailored IP</span>
+          </div>
+
+          <div class="sb-content-grid">
+            <div class="sb-section">
+              <h4>What It Does</h4>
+              <p>
+                Complete bespoke engineering tailored from scratch around unique operational hurdles, proprietary
+                algorithms, specialized computer vision, or strict private cloud constraints.
+              </p>
+            </div>
+            <div class="sb-section">
+              <h4>Business Problem It Solves</h4>
+              <p>
+                When off-the-shelf SaaS tools cannot support your proprietary workflow or business model, we engineer
+                defensible, high-performance technology you fully own.
+              </p>
+            </div>
+          </div>
+
+          <div class="sb-usecases">
+            <h4>Example Use Cases</h4>
+            <div class="usecases-pills">
+              <span class="usecase-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg> Custom computer vision for manufacturing quality control</span>
+              <span class="usecase-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg> Fine-tuned domain models running entirely on-premise</span>
+              <span class="usecase-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg> Proprietary pricing and risk underwriting algorithms</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- NOT SURE WHAT YOU NEED BANNER -->
+      <div class="unsure-banner">
+        <h2>Not sure what you need?</h2>
+        <p>
+          You don't have to choose a category upfront. Simply tell us about your business problem or operational hurdle
+          — we will assess the options and outline the practical path forward.
+        </p>
+        <a href="../contact/" class="btn btn-primary" style="padding:1rem 2.25rem; font-size:1.05rem">
+          Talk to Us &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../" class="nav-brand">
+            <img src="../assets/brand/logo-mark-64.png" alt="Happy Fly Logo" class="nav-brand-logo-mark" width="40" height="40">
+            <div class="nav-brand-title">
+              HAPPY FLY
+              <span class="nav-brand-subtitle">AI Solutions &amp; Consultancy</span>
+            </div>
+          </a>
+          <p>
+            Happy Fly helps businesses identify, design and build practical AI solutions around real business problems.
+            Custom AI consultancy, intelligent automation, and software engineering.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="../solutions/">Solutions</a></li>
+            <!-- [PRESERVED: <li><a href="../products/">Products</a></li>] -->
+            <li><a href="../how-we-work/">How We Work</a></li>
+            <li><a href="../about/">About</a></li>
+            <li><a href="../contact/">Talk to Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Capabilities</h4>
+          <ul class="footer-links">
+            <li><a href="../solutions/">AI Strategy &amp; Discovery</a></li>
+            <li><a href="../solutions/">Intelligent Automation</a></li>
+            <li><a href="../solutions/">Custom AI Applications</a></li>
+            <li><a href="../solutions/">Enterprise Integration</a></li>
+          </ul>
+        </div>
+        <!-- [PRESERVED:
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul class="footer-links">
+            <li><a href="../karatIQ/">KaratIQ</a></li>
+            <li><a href="../athitios/">Atithi OS</a></li>
+          </ul>
+        </div>
+        ]-->
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:hello@happyflyconsultancy.com">hello@happyflyconsultancy.com</a></li>
+            <li><a href="../contact/">Schedule Consultation</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Happy Fly. All rights reserved.</div>
+        <div style="display:flex; gap:1.5rem">
+          <a href="../privacy/" style="color:var(--text-dim); text-decoration:none">Privacy Policy</a>
+          <a href="../terms/" style="color:var(--text-dim); text-decoration:none">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    if (mobileToggle && mobileDrawer) {
+      mobileToggle.addEventListener('click', () => {
+        const isOpen = mobileDrawer.classList.toggle('open');
+        mobileToggle.classList.toggle('active', isOpen);
+        mobileToggle.setAttribute('aria-expanded', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      });
+      document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileDrawer.classList.remove('open');
+          mobileToggle.classList.remove('active');
+          mobileToggle.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        });
+      });
+    }
+  </script>
+</body>
+
+</html>

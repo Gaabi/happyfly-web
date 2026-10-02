@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Happy Fly | AI Solutions &amp; Consultancy</title>
+  <meta name="description"
+    content="Learn about Happy Fly: our philosophy, what we believe about practical AI, and our focus on custom AI solutions and software engineering.">
+  <meta property="og:title" content="About — Happy Fly | AI Solutions &amp; Consultancy">
+  <meta property="og:description"
+    content="Learn about Happy Fly: our philosophy, what we believe about practical AI, and our focus on custom AI solutions and software engineering.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../assets/brand/og-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="../assets/brand/og-preview.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/brand/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/brand/apple-touch-icon.png">
+  <link rel="shortcut icon" href="../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+
+  <style>
+    /* ABOUT PAGE STYLES */
+    .about-story-section {
+      padding: 2rem 0 5rem;
+    }
+
+    .about-story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-bottom: 6rem;
+    }
+
+    .about-lead-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: 3.5rem 3rem;
+      position: relative;
+    }
+
+    .about-lead-box h2 {
+      font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+      font-weight: 800;
+      color: var(--text-white);
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .about-lead-box p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-highlight-card {
+      background: linear-gradient(135deg, rgba(79, 117, 255, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-xl);
+      padding: 3.5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .about-quote {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      color: var(--text-white);
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    .about-pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-bottom: 6rem;
+    }
+
+    .pillar-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 2.5rem 2rem;
+      transition: var(--transition);
+    }
+
+    .pillar-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
+    }
+
+    .pillar-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-blue);
+      margin-bottom: 1.35rem;
+    }
+
+    .pillar-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 0.65rem;
+    }
+
+    .pillar-card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* THE TWO DIVISIONS EXPLANATION */
+    .division-deep-dive {
+      background: #090B12;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: 4rem 3.5rem;
+      margin-bottom: 6rem;
+    }
+
+    .dd-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .dd-col {
+      padding: 2rem;
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .dd-col.blue-border { border-top: 3px solid var(--accent-blue); }
+    .dd-col.purple-border { border-top: 3px solid var(--accent-purple); }
+
+    .dd-tag {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .dd-col.blue-border .dd-tag { color: var(--accent-blue); }
+    .dd-col.purple-border .dd-tag { color: var(--accent-purple); }
+
+    .dd-col h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-white);
+      margin-bottom: 0.25rem;
+    }
+
+    .dd-tagline {
+      font-style: italic;
+      color: var(--text-dim);
+      font-family: var(--font-serif);
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+
+    .dd-col p {
+      font-size: 0.93rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    @media (max-width: 1024px) {
+      .about-story-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .about-pillars-grid {
+        grid-template-columns: 1fr;
+      }
+      .dd-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .division-deep-dive {
+        padding: 2.5rem 1.75rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- GLOBAL NAVIGATION -->
+  <nav id="navbar">
+    <div class="container">
+      <a href="../" class="nav-brand">
+        <img src="../assets/brand/logo-mark-64.png" alt="Happy Fly Logo" class="nav-brand-logo-mark" width="40" height="40">
+        <div class="nav-brand-title">
+          HAPPY FLY
+          <span class="nav-brand-subtitle">AI Solutions &amp; Consultancy</span>
+        </div>
+      </a>
+
+      <div class="nav-menu">
+        <a href="../solutions/" class="nav-link">Solutions</a>
+        <!-- [PRESERVED: <a href="../products/" class="nav-link">Products</a>] -->
+        <a href="../how-we-work/" class="nav-link">How We Work</a>
+        <a href="../about/" class="nav-link active">About</a>
+        <a href="../contact/" class="btn btn-primary nav-cta">Talk to Us</a>
+      </div>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <a href="../solutions/" class="nav-link mobile-link">Solutions</a>
+    <!-- [PRESERVED: <a href="../products/" class="nav-link mobile-link">Products</a>] -->
+    <a href="../how-we-work/" class="nav-link mobile-link">How We Work</a>
+    <a href="../about/" class="nav-link mobile-link">About</a>
+    <a href="../contact/" class="btn btn-primary mobile-link">Talk to Us</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="page-hero-glow"></div>
+    <div class="container">
+      <span class="section-eyebrow">Our Story &amp; Philosophy</span>
+      <h1>Technology Built Around Real Problems.</h1>
+      <p>
+        Happy Fly was created on a simple observation: modern businesses are surrounded by AI hype, yet struggle to find practical, reliable software that actually moves their bottom line.
+      </p>
+    </div>
+  </section>
+
+  <!-- ABOUT CONTENT SECTION -->
+  <section class="about-story-section">
+    <div class="container">
+
+      <!-- WHAT WE ARE & CORE PHILOSOPHY -->
+      <div class="about-story-grid">
+        <div class="about-lead-box">
+          <span class="section-eyebrow">Who We Are</span>
+          <h2>A Technology Company, Not a Hype Agency</h2>
+          <p>
+            Happy Fly helps businesses identify, design, and build practical AI solutions around real business problems. We don't believe business owners should need to understand transformer architectures, vector embeddings, or machine learning algorithms to benefit from modern technology.
+          </p>
+          <p>
+            When you partner with us, you simply bring your business problem. We help determine whether AI, automation, custom software, clean data, or a smart hybrid is the right solution. And then our engineering team builds it.
+          </p>
+        </div>
+
+        <div class="about-highlight-card">
+          <div class="about-quote">
+            "You bring the business problem. We figure out where technology and AI can help. Then we build it."
+          </div>
+          <div style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">
+            We believe the best technology is invisible: it simply speeds up workflows, removes friction, and frees human teams to do their best creative work.
+          </div>
+        </div>
+      </div>
+
+      <!-- WHAT WE BELIEVE -->
+      <div class="section-header">
+        <span class="section-eyebrow teal">Core Beliefs</span>
+        <h2 class="section-title">What We Believe</h2>
+        <p class="section-subtitle">
+          Principles that guide our engineering decisions, client recommendations, and product roadmap.
+        </p>
+      </div>
+
+      <div class="about-pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <h3>Practicality Over Hype</h3>
+          <p>We never force an AI model where a simple automated script or structured database is faster, cheaper, and 100% reliable. The goal is business impact, not buzzword compliance.</p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <h3>Data Sovereignty &amp; Privacy</h3>
+          <p>Your business intelligence is your greatest competitive moat. We build isolated, secure architectures ensuring your proprietary data is never leaked or used to train public models.</p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          </div>
+          <h3>Production-Grade Engineering</h3>
+          <p>We build enterprise-grade architectures with high reliability, robust failovers, and rigorous automated testing built to thrive in real-world business operations.</p>
+        </div>
+      </div>
+
+      <!-- [PRESERVED: THE TWO DIVISIONS SECTION - HIDDEN PER REQUIREMENTS]
+      <div class="division-deep-dive">
+        <div class="section-header" style="margin-bottom: 1.5rem;">
+          <span class="section-eyebrow purple">Our Business Architecture</span>
+          <h2 style="font-size: clamp(1.8rem, 3.2vw, 2.5rem); font-weight: 800; color: var(--text-white); letter-spacing:-0.02em;">
+            The Two Divisions of Happy Fly
+          </h2>
+          <p style="color: var(--text-muted); font-size: 1rem; max-width: 600px;">
+            Why we separate our business into Solutions and Products — and how each reinforces the other.
+          </p>
+        </div>
+
+        <div class="dd-grid">
+          <div class="dd-col blue-border">
+            <div class="dd-tag">Division 01</div>
+            <h3>SOLUTIONS</h3>
+            <span class="dd-tagline">"Built for your business."</span>
+            <p>
+              Bespoke engagements engineered around a company's specific workflow, systems, and operational hurdles. We collaborate directly with your team to design, build, and deploy custom software, automation, and AI models tailored to your exact competitive requirements.
+            </p>
+          </div>
+
+          <div class="dd-col purple-border">
+            <div class="dd-tag">Division 02</div>
+            <h3>PRODUCTS</h3>
+            <span class="dd-tagline">"Built by Happy Fly."</span>
+            <p>
+              Ready-made, proprietary software platforms conceived, engineered, and maintained by Happy Fly. Products like <strong>KaratIQ</strong> (jewellery commerce) and <strong>Atithi OS</strong> (hospitality) demonstrate that we ship real, scalable software and understand vertical industry workflows intimately.
+            </p>
+          </div>
+        </div>
+      </div>
+      -->
+
+      <!-- FINAL CTA -->
+      <div class="final-cta-card">
+        <span class="section-eyebrow" style="color:var(--text-white); margin-bottom: 0.75rem;">Get in Touch</span>
+        <h2>Let's talk about your business problem.</h2>
+        <p>
+          Whether you're exploring AI for the first time or looking to scale custom automated systems, our engineering team is ready to help.
+        </p>
+        <div class="final-cta-actions">
+          <a href="../contact/" class="btn btn-primary" style="padding:1rem 2.25rem; font-size:1.05rem">
+            Talk to Us &rarr;
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../" class="nav-brand">
+            <img src="../assets/brand/logo-mark-64.png" alt="Happy Fly Logo" class="nav-brand-logo-mark" width="40" height="40">
+            <div class="nav-brand-title">
+              HAPPY FLY
+              <span class="nav-brand-subtitle">AI Solutions &amp; Consultancy</span>
+            </div>
+          </a>
+          <p>
+            Happy Fly helps businesses identify, design and build practical AI solutions around real business problems. Custom AI consultancy, intelligent automation, and software engineering.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="../solutions/">Solutions</a></li>
+            <!-- [PRESERVED: <li><a href="../products/">Products</a></li>] -->
+            <li><a href="../how-we-work/">How We Work</a></li>
+            <li><a href="../about/">About</a></li>
+            <li><a href="../contact/">Talk to Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Capabilities</h4>
+          <ul class="footer-links">
+            <li><a href="../solutions/">AI Strategy &amp; Discovery</a></li>
+            <li><a href="../solutions/">Intelligent Automation</a></li>
+            <li><a href="../solutions/">Custom AI Applications</a></li>
+            <li><a href="../solutions/">Enterprise Integration</a></li>
+          </ul>
+        </div>
+        <!-- [PRESERVED:
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul class="footer-links">
+            <li><a href="../karatIQ/">KaratIQ</a></li>
+            <li><a href="../athitios/">Atithi OS</a></li>
+          </ul>
+        </div>
+        ]-->
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:hello@happyflyconsultancy.com">hello@happyflyconsultancy.com</a></li>
+            <li><a href="../contact/">Schedule Consultation</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Happy Fly. All rights reserved.</div>
+        <div style="display:flex; gap:1.5rem">
+          <a href="../privacy/" style="color:var(--text-dim); text-decoration:none">Privacy Policy</a>
+          <a href="../terms/" style="color:var(--text-dim); text-decoration:none">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    if (mobileToggle && mobileDrawer) {
+      mobileToggle.addEventListener('click', () => {
+        const isOpen = mobileDrawer.classList.toggle('open');
+        mobileToggle.classList.toggle('active', isOpen);
+        mobileToggle.setAttribute('aria-expanded', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      });
+      document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileDrawer.classList.remove('open');
+          mobileToggle.classList.remove('active');
+          mobileToggle.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        });
+      });
+    }
+  </script>
+</body>
+</html>
