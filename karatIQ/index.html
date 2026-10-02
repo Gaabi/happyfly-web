@@ -5,6 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KaratIQ — AI Commerce Platform for Jewellery Retail | Happy Fly Consultancy</title>
 <meta name="description" content="KaratIQ by Happy Fly Consultancy — AI-powered commerce platform for jewellery retailers. Virtual try-ons, AI shopping assistant, visual search, and personalized recommendations.">
+<meta property="og:title" content="KaratIQ — AI Commerce Platform for Jewellery Retail | Happy Fly">
+<meta property="og:description" content="KaratIQ by Happy Fly — AI-powered commerce platform for jewellery retailers. Virtual try-ons, AI shopping assistant, visual search, and personalized recommendations.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="../assets/brand/og-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="../assets/brand/og-preview.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/brand/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/brand/apple-touch-icon.png">
+<link rel="shortcut icon" href="../favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -55,8 +67,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.25rem 0;transitio
 nav.scrolled{background:rgba(26,26,46,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:.8rem 0;box-shadow:0 1px 40px rgba(0,0,0,.18)}
 nav .container{display:flex;align-items:center;justify-content:space-between}
 .nav-logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--white)}
+.nav-logo-img{height:34px;width:auto;object-fit:contain}
 .nav-logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--gold),var(--gold-light));border-radius:8px;display:grid;place-items:center;font-weight:700;font-size:.6rem;color:var(--charcoal);font-family:var(--mono);letter-spacing:-.02em}
 .nav-logo-text{font-weight:600;font-size:1.05rem}.nav-logo-text span{font-weight:400;color:rgba(255,255,255,.5);font-size:.72rem;margin-left:.3rem}
+.mobile-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.mobile-toggle.active span:nth-child(2){opacity:0;transform:scaleX(0)}
+.mobile-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-nav-overlay{position:fixed;inset:0;background:rgba(26,26,46,.97);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;pointer-events:none;transition:opacity .4s cubic-bezier(.16,1,.3,1)}
+.mobile-nav-overlay.open{opacity:1;pointer-events:auto}
+.mobile-nav-overlay a{color:var(--white);text-decoration:none;font-size:1.4rem;font-weight:600;transition:color .3s}
+.mobile-nav-overlay a:hover{color:var(--gold)}
 .nav-links{display:flex;gap:2rem;align-items:center}
 .nav-links a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.86rem;font-weight:500;letter-spacing:.02em;transition:color .3s;position:relative}
 .nav-links a:hover{color:var(--white)}
@@ -182,14 +202,44 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .pp-icon.gold{background:linear-gradient(135deg,var(--gold),var(--gold-light))}.pp-icon.teal{background:linear-gradient(135deg,#0D9488,#14B8A6)}
 .pp-text{text-align:left}.pp-text strong{display:block;color:var(--white);font-size:.9rem;font-weight:700}.pp-text span{font-size:.7rem;color:var(--g500)}
 
-/* CTA */
-.cta{padding:8rem 0;background:var(--cream);text-align:center;position:relative;overflow:hidden}
-.cta::before{content:'';position:absolute;top:50%;left:50%;width:600px;height:600px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(201,160,80,.08),transparent 70%);border-radius:50%}
+/* CTA & DEMO FORM */
+.cta{padding:7rem 0 8rem;background:var(--cream);text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;top:50%;left:50%;width:700px;height:700px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(201,160,80,.09),transparent 70%);border-radius:50%}
 .cta .container{position:relative;z-index:2}
 .cta h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);color:var(--g900);margin-bottom:1rem}
-.cta p{font-size:1.02rem;color:var(--g500);margin-bottom:2.5rem;max-width:520px;margin-inline:auto;line-height:1.6}
-.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-.cta .btn-secondary{color:var(--g600);border-color:var(--g300)}.cta .btn-secondary:hover{color:var(--g800);border-color:var(--gold);background:var(--white)}
+.cta p{font-size:1.02rem;color:var(--g500);margin-bottom:2.5rem;max-width:620px;margin-inline:auto;line-height:1.6}
+.demo-section-header{max-width:680px;margin:0 auto 2.5rem;text-align:center}
+.demo-grid{display:grid;grid-template-columns:1fr 1.35fr;gap:2.5rem;align-items:start;text-align:left;max-width:1080px;margin:0 auto}
+.demo-highlights{background:var(--white);border:1px solid var(--g200);border-radius:16px;padding:2rem;box-shadow:0 4px 20px rgba(0,0,0,.03)}
+.demo-highlights h3{font-size:1.25rem;color:var(--g900);margin-bottom:1.5rem;font-family:var(--sans);font-weight:700}
+.demo-perks{list-style:none;display:flex;flex-direction:column;gap:1.25rem;margin-bottom:2rem}
+.demo-perks li{display:flex;gap:0.9rem;align-items:flex-start}
+.perk-bullet{width:28px;height:28px;border-radius:50%;background:var(--gold-pale);color:var(--charcoal);display:grid;place-items:center;flex-shrink:0;margin-top:2px}
+.demo-perks strong{display:block;color:var(--g900);font-size:0.92rem;font-weight:600;margin-bottom:0.2rem}
+.demo-perks span{display:block;color:var(--g500);font-size:0.82rem;line-height:1.5}
+.demo-direct-box{background:var(--ivory);border:1px dashed var(--gold);border-radius:12px;padding:1.25rem}
+.direct-label{display:block;font-size:0.76rem;color:var(--g700);font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-bottom:0.5rem}
+.direct-email-link{display:inline-flex;align-items:center;gap:0.5rem;color:var(--g900);text-decoration:none;font-weight:600;font-size:0.9rem;transition:color .2s}
+.direct-email-link:hover{color:var(--gold)}
+.direct-note{font-size:0.74rem;color:var(--g500);margin-top:0.4rem;line-height:1.4}
+.demo-form-card{background:var(--white);border:1px solid var(--g200);border-radius:16px;padding:2.25rem;box-shadow:0 15px 40px rgba(0,0,0,.06)}
+.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.f-group{margin-bottom:1rem}
+.f-label{display:block;font-size:0.8rem;font-weight:600;color:var(--g700);margin-bottom:0.4rem}
+.f-input, .f-select, .f-textarea{width:100%;padding:0.75rem 0.9rem;border:1px solid var(--g300);border-radius:8px;font-family:var(--sans);font-size:0.9rem;color:var(--g900);background:var(--white);transition:border-color .2s,box-shadow .2s;outline:none}
+.f-input:focus, .f-select:focus, .f-textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,160,80,.18)}
+.f-textarea{resize:vertical;min-height:80px}
+.f-chips-grid{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.25rem}
+.f-chip{display:inline-flex;align-items:center;gap:0.4rem;padding:0.4rem 0.75rem;border:1px solid var(--g200);border-radius:20px;font-size:0.78rem;font-weight:500;color:var(--g600);background:var(--g50);cursor:pointer;user-select:none;transition:all .2s}
+.f-chip input{accent-color:var(--gold)}
+.f-chip:has(input:checked){background:rgba(201,160,80,.15);border-color:var(--gold);color:var(--charcoal);font-weight:600}
+.form-submit-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:0.6rem;padding:0.95rem 1.5rem;font-size:0.95rem;font-weight:600;border:none;border-radius:8px;cursor:pointer;margin-top:0.75rem;background:var(--gold);color:var(--charcoal);transition:all .3s var(--ease)}
+.form-submit-btn:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 6px 20px rgba(201,160,80,.35)}
+.form-success-box{margin-top:1.25rem;padding:1.1rem;border-radius:10px;background:#F0FDF4;border:1px solid #BBF7D0;display:flex;gap:0.75rem;align-items:flex-start;animation:fadeUp .4s var(--ease)}
+.success-icon{width:26px;height:26px;border-radius:50%;background:#22C55E;color:var(--white);display:grid;place-items:center;font-weight:700;font-size:0.85rem;flex-shrink:0}
+.success-text strong{display:block;color:#15803D;font-size:0.92rem;margin-bottom:0.2rem}
+.success-text p{color:#166534;font-size:0.82rem;line-height:1.45;margin:0!important}
+@media(max-width:900px){.demo-grid{grid-template-columns:1fr;gap:2rem}.form-row-2{grid-template-columns:1fr;gap:0}.demo-form-card{padding:1.5rem}}
 
 /* FOOTER */
 footer{background:var(--deep);padding:4rem 0 2rem;color:var(--g400)}
@@ -225,7 +275,8 @@ footer{background:var(--deep);padding:4rem 0 2rem;color:var(--g400)}
 <body>
 
 <nav id="nav"><div class="container">
-  <a href="../" class="nav-logo"><div class="nav-logo-icon">KIQ</div><span class="nav-logo-text">KaratIQ <span>by Happy Fly</span></span></a>
+  <a href="#" class="nav-logo" title="Back to top"><img src="../assets/brand/logo-mark-64.png" alt="Happy Fly" class="nav-logo-img"><span class="nav-logo-text">KaratIQ <span>by Happy Fly</span></span></a>
+  <div class="mobile-nav-overlay" id="mobileNav"><a href="../">Home</a><a href="#features">Features</a><a href="#impact">Why KaratIQ</a><a href="#integrations">Integrations</a><a href="#about">Company</a><a href="#contact">Book a Demo</a></div>
   <div class="nav-links">
     <a href="../">Home</a><a href="#features">Features</a><a href="#impact">Why KaratIQ</a><a href="#integrations">Integrations</a><a href="#about">Company</a>
     <a href="#contact" class="nav-cta">Book a Demo</a>
@@ -414,9 +465,9 @@ footer{background:var(--deep);padding:4rem 0 2rem;color:var(--g400)}
 <!-- POWERED BY -->
 <section class="powered-by" id="about"><div class="container"><div class="powered-inner reveal">
   <div class="powered-badge"><span>The Company Behind KaratIQ</span></div>
-  <h2>Built by Happy Fly Consultancy</h2>
-  <p><strong>Happy Fly Consultancy</strong> is a technology consultancy specializing in digital transformation. We design, build, and deploy AI-powered platforms that help businesses deliver world-class customer experiences.</p>
-  <p>KaratIQ is our commerce platform for the jewellery industry — joining <strong>Atithi OS</strong>, our intelligent hospitality operating system, in the Happy Fly product family.</p>
+  <h2>Built by Happy Fly</h2>
+  <p><strong>Happy Fly</strong> builds custom AI solutions for businesses and proprietary AI products for industries. We design, build, and deploy AI-powered platforms that help businesses deliver world-class customer experiences.</p>
+  <p>KaratIQ is our AI commerce platform for the jewellery industry — joining <strong>Atithi OS</strong>, our intelligent hospitality operating system, in the Happy Fly product family.</p>
   <div class="powered-products">
     <a href="./" class="powered-product"><div class="pp-icon gold">KIQ</div><div class="pp-text"><strong>KaratIQ</strong><span>AI Jewellery Commerce</span></div></a>
     <a href="../athitios/" class="powered-product"><div class="pp-icon teal">AO</div><div class="pp-text"><strong>Atithi OS</strong><span>Hospitality Platform</span></div></a>
@@ -425,12 +476,127 @@ footer{background:var(--deep);padding:4rem 0 2rem;color:var(--g400)}
 
 <!-- CTA -->
 <section class="cta" id="contact"><div class="container">
-  <div class="section-eyebrow reveal" style="justify-content:center">Get Started</div>
-  <h2 class="reveal reveal-delay-1">Bring AI-Powered Shopping<br>to Your Jewellery Store</h2>
-  <p class="reveal reveal-delay-2">See KaratIQ in action with a personalized demo. No commitment — just a conversation about what's possible for your business.</p>
-  <div class="cta-actions reveal reveal-delay-3">
-    <a href="mailto:hello@happyflyconsultancy.com?subject=KaratIQ Demo Request" class="btn-primary">Book a Demo <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    <a href="mailto:hello@happyflyconsultancy.com" class="btn-secondary">Contact Us</a>
+  <div class="demo-section-header">
+    <div class="section-eyebrow reveal" style="justify-content:center">Book a Product Walkthrough</div>
+    <h2 class="reveal reveal-delay-1">Experience KaratIQ Live</h2>
+    <p class="reveal reveal-delay-2">Schedule a tailored 30-minute demonstration for your jewellery brand or retail showroom. See real-time AR try-on, conversational sales assistance, and visual photo search in action.</p>
+  </div>
+
+  <div class="demo-grid reveal reveal-delay-3">
+    <!-- Highlights Card -->
+    <div class="demo-highlights">
+      <h3>What You'll Discover</h3>
+      <ul class="demo-perks">
+        <li>
+          <div class="perk-bullet">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <strong>Photorealistic AR Try-On Demo</strong>
+            <span>Test live virtual try-on on customer hand/face feeds for rings, necklaces, bangles, and earrings.</span>
+          </div>
+        </li>
+        <li>
+          <div class="perk-bullet">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <strong>Conversational AI Stylist &amp; Budget Engine</strong>
+            <span>Experience how AI navigates diamond specs (4Cs), gold purity, making charges, and bridal gifting.</span>
+          </div>
+        </li>
+        <li>
+          <div class="perk-bullet">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <strong>Catalog &amp; Inventory Integration</strong>
+            <span>Quick review of syncing your Shopify, WooCommerce, Magento, or custom ERP inventory into KaratIQ.</span>
+          </div>
+        </li>
+      </ul>
+
+      <div class="demo-direct-box">
+        <span class="direct-label">Need an enterprise custom deployment?</span>
+        <a href="mailto:hello@happyflyconsultancy.com" class="direct-email-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          hello@happyflyconsultancy.com
+        </a>
+        <div class="direct-note">Response within 24 business hours from our jewellery retail technology team.</div>
+      </div>
+    </div>
+
+    <!-- Form Card -->
+    <div class="demo-form-card">
+      <form id="karatiqDemoForm" onsubmit="handleKaratiqDemoSubmit(event)">
+        <div class="form-row-2">
+          <div class="f-group">
+            <label for="kiqName" class="f-label">Your Name *</label>
+            <input type="text" id="kiqName" class="f-input" placeholder="e.g. Ananya Mehra" required>
+          </div>
+          <div class="f-group">
+            <label for="kiqEmail" class="f-label">Work Email *</label>
+            <input type="email" id="kiqEmail" class="f-input" placeholder="e.g. ananya@mehradiamonds.com" required>
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="f-group">
+            <label for="kiqPhone" class="f-label">Phone / WhatsApp *</label>
+            <input type="tel" id="kiqPhone" class="f-input" placeholder="e.g. +91 98200 12345" required>
+          </div>
+          <div class="f-group">
+            <label for="kiqBrand" class="f-label">Jewellery Brand / Store Name *</label>
+            <input type="text" id="kiqBrand" class="f-input" placeholder="e.g. Mehra Fine Jewels" required>
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="f-group">
+            <label for="kiqCity" class="f-label">City / Region</label>
+            <input type="text" id="kiqCity" class="f-input" placeholder="e.g. Mumbai, Delhi, Surat...">
+          </div>
+          <div class="f-group">
+            <label for="kiqBusinessModel" class="f-label">Retail Format</label>
+            <select id="kiqBusinessModel" class="f-select">
+              <option value="Single Retail Showroom">Single Retail Showroom</option>
+              <option value="Multi-Store Retail Chain (2-10 stores)">Multi-Store Retail Chain (2-10 stores)</option>
+              <option value="Enterprise Chain (10+ stores)">Enterprise Chain (10+ stores)</option>
+              <option value="Online / D2C Jewellery Brand">Online / D2C Jewellery Brand</option>
+              <option value="Manufacturer & Wholesaler">Manufacturer &amp; Wholesaler</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="f-group">
+          <label class="f-label">Key Capabilities You'd Like to Prioritize</label>
+          <div class="f-chips-grid">
+            <label class="f-chip"><input type="checkbox" name="kiqCapability" value="Virtual AR Try-On" checked> <span>AR Virtual Try-On</span></label>
+            <label class="f-chip"><input type="checkbox" name="kiqCapability" value="AI Stylist & Sales Concierge" checked> <span>AI Stylist &amp; Sales Concierge</span></label>
+            <label class="f-chip"><input type="checkbox" name="kiqCapability" value="Visual Photo Search"> <span>Visual Photo Search</span></label>
+            <label class="f-chip"><input type="checkbox" name="kiqCapability" value="Budget Builder Engine"> <span>Budget Recommendation Engine</span></label>
+          </div>
+        </div>
+
+        <div class="f-group">
+          <label for="kiqWebsite" class="f-label">Website / Instagram / Notes (Optional)</label>
+          <textarea id="kiqWebsite" class="f-textarea" placeholder="e.g. www.mehradiamonds.com, looking to deploy virtual try-on on our mobile store..."></textarea>
+        </div>
+
+        <button type="submit" id="kiqSubmitBtn" class="form-submit-btn">
+          <span>Schedule KaratIQ Demo</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+
+        <div id="kiqFeedback" class="form-success-box" style="display:none;">
+          <div class="success-icon">✓</div>
+          <div class="success-text">
+            <strong>Demo Request Received!</strong>
+            <p>Opening your email client to dispatch the request to enquiry@happyflyconsultancy.com. Our jewellery retail AI team will be in touch shortly.</p>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </div></section>
 
@@ -438,16 +604,16 @@ footer{background:var(--deep);padding:4rem 0 2rem;color:var(--g400)}
 <footer><div class="container">
   <div class="footer-top">
     <div class="footer-brand">
-      <a href="./" class="footer-logo-wrap"><div class="f-icon">KIQ</div><span class="f-text">KaratIQ</span></a>
-      <p>AI-powered commerce platform for jewellery retailers. Built by Happy Fly Consultancy.</p>
+      <a href="#" class="footer-logo-wrap" title="Back to top"><div class="f-icon">KIQ</div><span class="f-text">KaratIQ</span><span style="font-size:0.75rem;color:var(--g400);margin-left:8px;display:inline-flex;align-items:center;gap:4px;">by <img src="../assets/brand/logo-mark-64.png" alt="Happy Fly" style="height:18px;width:auto;vertical-align:middle;"> Happy Fly</span></a>
+      <p>AI-powered commerce platform for jewellery retailers. Built by Happy Fly.</p>
     </div>
     <div class="footer-col"><h4>Products</h4><a href="./">KaratIQ</a><a href="../athitios/">Atithi OS</a><a href="../">Happy Fly Home</a></div>
     <div class="footer-col"><h4>KaratIQ</h4><a href="#features">Virtual Try-On</a><a href="#features">AI Assistant</a><a href="#features">Photo Search</a><a href="#features">Budget Builder</a></div>
     <div class="footer-col"><h4>Company</h4><a href="#about">About Happy Fly</a><a href="mailto:hello@happyflyconsultancy.com">Contact</a><a href="#">Careers</a></div>
   </div>
   <div class="footer-bottom">
-    <span>&copy; 2026 Happy Fly Consultancy. KaratIQ is a product of Happy Fly Consultancy.</span>
-    <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+    <span>&copy; 2026 Happy Fly. KaratIQ is a product of Happy Fly.</span>
+    <div class="footer-bottom-links"><a href="../privacy/">Privacy Policy</a><a href="../terms/">Terms of Service</a></div>
   </div>
 </div></footer>
 
@@ -456,7 +622,66 @@ const observer=new IntersectionObserver(e=>{e.forEach(t=>{if(t.isIntersecting)t.
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 const nav=document.getElementById('nav');let ticking=false;
 window.addEventListener('scroll',()=>{if(!ticking){window.requestAnimationFrame(()=>{nav.classList.toggle('scrolled',window.scrollY>60);ticking=false});ticking=true}});
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}})});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const href=a.getAttribute('href');
+    if(href==='#'||href==='#top'){
+      e.preventDefault();
+      window.scrollTo({top:0,behavior:'smooth'});
+      return;
+    }
+    const t=document.querySelector(href);
+    if(t){
+      e.preventDefault();
+      t.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+  });
+});
+// Mobile menu toggle
+const mobileToggle=document.querySelector('.mobile-toggle');
+const mobileNav=document.getElementById('mobileNav');
+if(mobileToggle&&mobileNav){mobileToggle.addEventListener('click',()=>{mobileToggle.classList.toggle('active');mobileNav.classList.toggle('open');document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':''});
+mobileNav.querySelectorAll('a').forEach(a=>{a.addEventListener('click',()=>{mobileToggle.classList.remove('active');mobileNav.classList.remove('open');document.body.style.overflow=''})});}
+
+// KaratIQ Demo Form Handler
+function handleKaratiqDemoSubmit(e){
+  e.preventDefault();
+  const name=document.getElementById('kiqName').value.trim();
+  const email=document.getElementById('kiqEmail').value.trim();
+  const phone=document.getElementById('kiqPhone').value.trim();
+  const brand=document.getElementById('kiqBrand').value.trim();
+  const city=document.getElementById('kiqCity').value.trim();
+  const model=document.getElementById('kiqBusinessModel').value;
+  const notes=document.getElementById('kiqWebsite').value.trim();
+
+  const checkedCaps=[];
+  document.querySelectorAll('input[name="kiqCapability"]:checked').forEach(cb=>checkedCaps.push(cb.value));
+
+  const subject=encodeURIComponent(`KaratIQ Demo Request: ${brand} (${model})`);
+  const body=encodeURIComponent(
+    `KaratIQ Demo Booking Request\n`+
+    `----------------------------------------\n`+
+    `Contact Name: ${name}\n`+
+    `Work Email: ${email}\n`+
+    `Phone / WhatsApp: ${phone}\n`+
+    `Jewellery Brand: ${brand}\n`+
+    `City / Region: ${city || 'N/A'}\n`+
+    `Retail Format: ${model}\n`+
+    `Priority AI Modules: ${checkedCaps.join(', ') || 'All Capabilities'}\n\n`+
+    `Website / Notes:\n${notes || 'None specified'}\n`
+  );
+
+  const feedback=document.getElementById('kiqFeedback');
+  const submitBtn=document.getElementById('kiqSubmitBtn');
+  if(feedback) feedback.style.display='flex';
+  if(submitBtn){
+    submitBtn.disabled=true;
+    submitBtn.style.opacity='0.7';
+    submitBtn.innerHTML='<span>Request Dispatched</span>';
+  }
+
+  window.location.href=`mailto:enquiry@happyflyconsultancy.com?subject=${subject}&body=${body}`;
+}
 </script>
 </body>
 </html>

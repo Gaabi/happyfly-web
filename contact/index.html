@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talk to Us — Happy Fly | AI Solutions &amp; Consultancy</title>
+  <meta name="description"
+    content="Have a business problem you're trying to solve? Talk to Happy Fly for custom AI consultancy, intelligent automation, and software engineering.">
+  <meta property="og:title" content="Talk to Us — Happy Fly | AI Solutions &amp; Consultancy">
+  <meta property="og:description"
+    content="Have a business problem you're trying to solve? Talk to Happy Fly for custom AI consultancy, intelligent automation, and software engineering.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../assets/brand/og-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="../assets/brand/og-preview.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/brand/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/brand/apple-touch-icon.png">
+  <link rel="shortcut icon" href="../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+
+  <style>
+    /* CONTACT PAGE STYLES */
+    .contact-hero {
+      padding: 7.25rem 0 2rem !important;
+    }
+
+    .contact-container-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .contact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: 2.25rem 2rem;
+    }
+
+    /* PATH SELECTOR */
+    .path-selector-label {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+      margin-bottom: 0.85rem;
+      display: block;
+    }
+
+    .path-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .path-btn {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.15rem 1rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      text-align: left;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .path-btn strong {
+      font-size: 0.95rem;
+      color: var(--text-white);
+      display: block;
+    }
+
+    .path-btn span {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+
+    .path-btn.active {
+      background: rgba(79, 117, 255, 0.1);
+      border-color: var(--accent-blue);
+      color: var(--text-white);
+    }
+
+    .path-btn.active strong {
+      color: var(--accent-blue);
+    }
+
+    /* SUB PRODUCT SELECTOR */
+    .sub-product-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1rem;
+      cursor: pointer;
+      text-align: left;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .sub-product-btn:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .sub-product-btn.active.teal-mode {
+      border-color: #0D9488;
+      background: rgba(13, 148, 136, 0.12);
+    }
+    .sub-product-btn.active.gold-mode {
+      border-color: #C9A050;
+      background: rgba(201, 160, 80, 0.12);
+    }
+    .pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .pill-dot.teal { background: #14B8A6; box-shadow: 0 0 8px rgba(20,184,166,0.6); }
+    .pill-dot.gold { background: #D4AF37; box-shadow: 0 0 8px rgba(212,175,55,0.6); }
+
+    /* FORM FIELDS */
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.15rem;
+    }
+
+    @media (max-width: 640px) {
+      .form-row-2 {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 1.15rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-main);
+      margin-bottom: 0.35rem;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      color: var(--text-white);
+      transition: var(--transition);
+      outline: none;
+    }
+
+    .form-select option {
+      background: #12141C;
+      color: #FFF;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--accent-blue);
+      background: rgba(255, 255, 255, 0.06);
+      box-shadow: 0 0 15px var(--accent-blue-glow);
+    }
+
+    .form-textarea {
+      min-height: 95px;
+      resize: vertical;
+    }
+
+    .contact-info-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+
+    .info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.85rem 1.75rem;
+    }
+
+    .info-card h3 {
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 0.5rem;
+    }
+
+    .info-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .email-highlight {
+      font-family: var(--font-mono);
+      font-size: 1.05rem;
+      color: var(--accent-blue);
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 0.5rem;
+      transition: var(--transition);
+    }
+
+    .email-highlight:hover {
+      color: var(--text-white);
+    }
+
+    /* SUCCESS CARD VIEW */
+    .success-card-view {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 2.75rem 1.5rem;
+      animation: feedbackFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .success-icon-badge {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #34D399;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 0 30px rgba(16, 185, 129, 0.22);
+    }
+
+    .success-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 0.65rem;
+      letter-spacing: -0.02em;
+    }
+
+    .success-desc {
+      font-size: 1.02rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 440px;
+      margin-bottom: 1.25rem;
+    }
+
+    .success-note {
+      font-size: 0.82rem;
+      font-family: var(--font-mono);
+      color: var(--accent-teal);
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      border-radius: var(--radius-full);
+      padding: 0.4rem 1.15rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .form-feedback {
+      display: none;
+      margin-top: 1.25rem;
+      padding: 1.25rem 1.5rem;
+      border-radius: var(--radius-md);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      animation: feedbackFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .form-feedback.success {
+      display: block;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #34D399;
+    }
+
+    .form-feedback.error {
+      display: block;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #F87171;
+    }
+
+    .form-feedback-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .form-feedback.success .form-feedback-title {
+      color: #6EE7B7;
+    }
+
+    .form-feedback.error .form-feedback-title {
+      color: #FCA5A5;
+    }
+
+    .btn-spinner {
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top-color: #FFFFFF;
+      border-radius: 50%;
+      display: inline-block;
+      animation: btnSpin 0.75s linear infinite;
+      vertical-align: middle;
+      margin-right: 0.5rem;
+    }
+
+    @keyframes btnSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes feedbackFadeIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 900px) {
+      .contact-container-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .path-buttons {
+        grid-template-columns: 1fr;
+      }
+      .contact-card {
+        padding: 2.5rem 1.75rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- GLOBAL NAVIGATION -->
+  <nav id="navbar">
+    <div class="container">
+      <a href="../" class="nav-brand">
+        <img src="../assets/brand/logo-mark-64.png" alt="Happy Fly Logo" class="nav-brand-logo-mark" width="40" height="40">
+        <div class="nav-brand-title">
+          HAPPY FLY
+          <span class="nav-brand-subtitle">AI Solutions &amp; Consultancy</span>
+        </div>
+      </a>
+
+      <div class="nav-menu">
+        <a href="../solutions/" class="nav-link">Solutions</a>
+        <!-- [PRESERVED: <a href="../products/" class="nav-link">Products</a>] -->
+        <a href="../how-we-work/" class="nav-link">How We Work</a>
+        <a href="../about/" class="nav-link">About</a>
+        <a href="../contact/" class="btn btn-primary nav-cta">Talk to Us</a>
+      </div>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <a href="../solutions/" class="nav-link mobile-link">Solutions</a>
+    <!-- [PRESERVED: <a href="../products/" class="nav-link mobile-link">Products</a>] -->
+    <a href="../how-we-work/" class="nav-link mobile-link">How We Work</a>
+    <a href="../about/" class="nav-link mobile-link">About</a>
+    <a href="../contact/" class="btn btn-primary mobile-link">Talk to Us</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="page-hero contact-hero">
+    <div class="page-hero-glow"></div>
+    <div class="container">
+      <span class="section-eyebrow">Get In Touch</span>
+      <h1>Let's talk.</h1>
+      <p>
+        Tell us what you're trying to improve or explore. No technical specifications or formal documents required.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACT INTERACTION SECTION -->
+  <section style="padding: 0.5rem 0 4rem;">
+    <div class="container">
+      <div class="contact-container-grid">
+
+        <!-- CONTACT FORM -->
+        <div class="contact-card">
+          <div id="formCardHeader">
+            <h2 style="font-size: 1.45rem; font-weight: 700; color: var(--text-white); margin-bottom: 1.25rem;">Start a Consultation</h2>
+          </div>
+
+          <!-- [PRESERVED: INQUIRY TYPE SELECTOR & PRODUCT SUB-SELECTOR - HIDDEN PER SPEC]
+          <span class="path-selector-label">Select Your Inquiry Type</span>
+          <div class="path-buttons">
+            <button type="button" class="path-btn active" id="pathSolutions" onclick="setInquiryType('solutions')">
+              <strong>I need a custom solution</strong>
+              <span>Bespoke AI built for your business</span>
+            </button>
+            <button type="button" class="path-btn" id="pathProducts" onclick="setInquiryType('products')">
+              <strong>I want to demo a product</strong>
+              <span>Atithi OS or KaratIQ</span>
+            </button>
+          </div>
+
+          <div class="product-selector-row" id="productSelectorRow" style="display:none; margin-bottom: 1.5rem;">
+            <span class="path-selector-label" style="margin-bottom:0.5rem">Select Product to Demo</span>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.75rem;">
+              <button type="button" class="sub-product-btn active teal-mode" id="subAthitios" onclick="setProductChoice('athitios')">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <span class="pill-dot teal"></span>
+                  <strong style="color:#FFF">Atithi OS</strong>
+                </div>
+                <span style="font-size:0.76rem; color:var(--text-dim);">Hospitality Platform</span>
+              </button>
+              <button type="button" class="sub-product-btn gold-mode" id="subKaratiq" onclick="setProductChoice('karatiq')">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <span class="pill-dot gold"></span>
+                  <strong style="color:#FFF">KaratIQ</strong>
+                </div>
+                <span style="font-size:0.76rem; color:var(--text-dim);">AI Jewellery Commerce</span>
+              </button>
+            </div>
+          </div>
+          -->
+
+          <!-- FORM INPUT CONTAINER -->
+          <div id="formFieldsContainer">
+            <form id="contactForm" onsubmit="handleContactSubmit(event)">
+              <input type="hidden" id="inquiryType" value="Custom Solution">
+              <input type="hidden" id="selectedProduct" value="">
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label" for="contactName">Your Name *</label>
+                  <input type="text" id="contactName" class="form-input" placeholder="e.g. Rahul Sharma" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="contactEmail">Work Email *</label>
+                  <input type="email" id="contactEmail" class="form-input" placeholder="e.g. rahul@company.com" required>
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <!-- General Company field (Custom Solution) -->
+                <div class="form-group" id="generalCompanyGroup">
+                  <label class="form-label" for="contactCompany">Company / Business Name</label>
+                  <input type="text" id="contactCompany" class="form-input" placeholder="e.g. Acme Enterprises">
+                </div>
+
+                <!-- Phone field -->
+                <div class="form-group" id="phoneGroup">
+                  <label class="form-label" for="contactPhone">Phone / WhatsApp</label>
+                  <input type="tel" id="contactPhone" class="form-input" placeholder="e.g. +91 98765 43210">
+                </div>
+              </div>
+
+              <!-- ATITHI OS SPECIFIC FIELDS -->
+              <div id="atithiFields" style="display:none;">
+                <div class="form-group">
+                  <label class="form-label" for="atithiPropName">Property / Hotel Name *</label>
+                  <input type="text" id="atithiPropName" class="form-input" placeholder="e.g. The Heritage Grand, Goa">
+                </div>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.15rem;">
+                  <div>
+                    <label class="form-label" for="atithiPropType">Property Type</label>
+                    <select id="atithiPropType" class="form-select">
+                      <option value="Boutique Hotel & Resort">Boutique Hotel &amp; Resort</option>
+                      <option value="Business / City Hotel">Business / City Hotel</option>
+                      <option value="Luxury Villa / Homestay">Luxury Villa / Homestay</option>
+                      <option value="Heritage / Palace">Heritage / Palace</option>
+                      <option value="Hotel Chain">Hotel Chain</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="form-label" for="atithiRoomCount">Room Inventory</label>
+                    <select id="atithiRoomCount" class="form-select">
+                      <option value="Under 25 Rooms">Under 25 Rooms</option>
+                      <option value="25 - 60 Rooms">25 &ndash; 60 Rooms</option>
+                      <option value="60 - 120 Rooms">60 &ndash; 120 Rooms</option>
+                      <option value="120+ Rooms">120+ Rooms</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- KARATIQ SPECIFIC FIELDS -->
+              <div id="karatiqFields" style="display:none;">
+                <div class="form-group">
+                  <label class="form-label" for="kiqStoreBrand">Jewellery Brand / Store Name *</label>
+                  <input type="text" id="kiqStoreBrand" class="form-input" placeholder="e.g. Mehra Fine Jewels">
+                </div>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.15rem;">
+                  <div>
+                    <label class="form-label" for="kiqFormat">Retail Format</label>
+                    <select id="kiqFormat" class="form-select">
+                      <option value="Single Retail Showroom">Single Retail Showroom</option>
+                      <option value="Multi-Store Chain (2-10)">Multi-Store Chain (2-10)</option>
+                      <option value="Enterprise Chain (10+)">Enterprise Chain (10+)</option>
+                      <option value="Online / D2C Brand">Online / D2C Brand</option>
+                      <option value="Wholesale & Manufacturer">Wholesale &amp; Manufacturer</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="form-label" for="kiqCity">City / Region</label>
+                    <input type="text" id="kiqCity" class="form-input" placeholder="e.g. Mumbai, Surat, Delhi">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contactMessage" id="messageLabel">
+                  What problem are you looking to solve? *
+                </label>
+                <textarea id="contactMessage" class="form-textarea" placeholder="Describe the operational bottleneck, manual task, or system you're looking to build..." required></textarea>
+              </div>
+
+              <!-- Inline feedback for errors or validation alerts -->
+              <div class="form-feedback" id="formFeedback" role="alert" aria-live="polite"></div>
+
+              <button type="submit" id="contactSubmitBtn" class="btn btn-primary" style="width: 100%; padding: 0.9rem; font-size: 1rem; margin-top: 0.5rem;">
+                Send Message &rarr;
+              </button>
+            </form>
+          </div>
+
+          <!-- SUCCESS CONFIRMATION STATE (Replaces form immediately without scroll) -->
+          <div id="successStateContainer" class="success-card-view" style="display:none;" role="status" aria-live="polite">
+            <div class="success-icon-badge">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <h3 class="success-title">Thank you for reaching out!</h3>
+            <p class="success-desc">
+              Your message has been submitted successfully. Our team will get back to you soon.
+            </p>
+            <div class="success-note">
+              <span>⚡ Direct Technical Review</span> &bull; <span>Response within 24 business hours</span>
+            </div>
+            <button type="button" class="btn btn-secondary" onclick="resetContactForm()" style="margin-top: 1.75rem; font-size: 0.88rem; padding: 0.65rem 1.35rem;">
+              Send Another Note &rarr;
+            </button>
+          </div>
+
+        </div>
+
+        <!-- CONTACT INFO & ASSURANCE PANEL -->
+        <div class="contact-info-panel">
+          <div class="info-card">
+            <h3>Direct Email</h3>
+            <p>
+              Prefer to write directly without using a form? Reach our engineering team at:
+            </p>
+            <a href="mailto:hello@happyflyconsultancy.com" class="email-highlight">hello@happyflyconsultancy.com</a>
+          </div>
+
+          <div class="info-card">
+            <h3>What Happens Next?</h3>
+            <p style="margin-bottom: 0.85rem;">
+              1. <strong>Direct Review:</strong> Your note goes directly to our technical partners, not a generic call center.
+            </p>
+            <p style="margin-bottom: 0.85rem;">
+              2. <strong>Rapid Response:</strong> We review your business context and reply within 24 business hours.
+            </p>
+            <p>
+              3. <strong>No Sales Pitch:</strong> We simply discuss whether AI or technology can solve your problem with positive ROI.
+            </p>
+          </div>
+
+          <!-- [PRESERVED: EXPLORE LIVE PRODUCTS CARD - HIDDEN PER REQUIREMENTS]
+          <div class="info-card">
+            <h3>Explore Live Products</h3>
+            <p style="margin-bottom: 1rem;">
+              Looking to see our ready-made platforms in action today?
+            </p>
+            <div style="display:flex; gap:0.75rem; flex-wrap:wrap">
+              <a href="../karatIQ/" class="btn btn-secondary" style="font-size:0.85rem; padding:0.6rem 1.1rem">KaratIQ &rarr;</a>
+              <a href="../athitios/" class="btn btn-secondary" style="font-size:0.85rem; padding:0.6rem 1.1rem">Atithi OS &rarr;</a>
+            </div>
+          </div>
+          -->
+
+          <div class="info-card">
+            <h3>Custom Consultation</h3>
+            <p style="margin-bottom: 0.85rem;">
+              Have an existing tech stack or specific integration requirements? We assess your architecture during our initial consultation.
+            </p>
+            <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-teal);">
+              &bull; Zero vendor lock-in &bull; Full IP ownership
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../" class="nav-brand">
+            <img src="../assets/brand/logo-mark-64.png" alt="Happy Fly Logo" class="nav-brand-logo-mark" width="40" height="40">
+            <div class="nav-brand-title">
+              HAPPY FLY
+              <span class="nav-brand-subtitle">AI Solutions &amp; Consultancy</span>
+            </div>
+          </a>
+          <p>
+            Happy Fly helps businesses identify, design and build practical AI solutions around real business problems. Custom AI consultancy, intelligent automation, and software engineering.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="../solutions/">Solutions</a></li>
+            <!-- [PRESERVED: <li><a href="../products/">Products</a></li>] -->
+            <li><a href="../how-we-work/">How We Work</a></li>
+            <li><a href="../about/">About</a></li>
+            <li><a href="../contact/">Talk to Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Capabilities</h4>
+          <ul class="footer-links">
+            <li><a href="../solutions/">AI Strategy &amp; Discovery</a></li>
+            <li><a href="../solutions/">Intelligent Automation</a></li>
+            <li><a href="../solutions/">Custom AI Applications</a></li>
+            <li><a href="../solutions/">Enterprise Integration</a></li>
+          </ul>
+        </div>
+        <!-- [PRESERVED:
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul class="footer-links">
+            <li><a href="../karatIQ/">KaratIQ</a></li>
+            <li><a href="../athitios/">Atithi OS</a></li>
+          </ul>
+        </div>
+        ]-->
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:hello@happyflyconsultancy.com">hello@happyflyconsultancy.com</a></li>
+            <li><a href="../contact/">Schedule Consultation</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Happy Fly. All rights reserved.</div>
+        <div style="display:flex; gap:1.5rem">
+          <a href="../privacy/" style="color:var(--text-dim); text-decoration:none">Privacy Policy</a>
+          <a href="../terms/" style="color:var(--text-dim); text-decoration:none">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    if (mobileToggle && mobileDrawer) {
+      mobileToggle.addEventListener('click', () => {
+        const isOpen = mobileDrawer.classList.toggle('open');
+        mobileToggle.classList.toggle('active', isOpen);
+        mobileToggle.setAttribute('aria-expanded', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      });
+      document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileDrawer.classList.remove('open');
+          mobileToggle.classList.remove('active');
+          mobileToggle.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        });
+      });
+    }
+
+    // Path selector logic
+    let currentProductChoice = 'athitios';
+
+    function setInquiryType(type) {
+      const btnSol = document.getElementById('pathSolutions');
+      const btnProd = document.getElementById('pathProducts');
+      const subRow = document.getElementById('productSelectorRow');
+      const hiddenType = document.getElementById('inquiryType');
+      const label = document.getElementById('messageLabel');
+      const textarea = document.getElementById('contactMessage');
+      const submitBtn = document.getElementById('contactSubmitBtn');
+      const phoneGroup = document.getElementById('phoneGroup');
+      const phoneInput = document.getElementById('contactPhone');
+      const generalCompany = document.getElementById('generalCompanyGroup');
+      const atithiFields = document.getElementById('atithiFields');
+      const karatiqFields = document.getElementById('karatiqFields');
+
+      if (type === 'solutions') {
+        btnSol.classList.add('active');
+        btnProd.classList.remove('active');
+        subRow.style.display = 'none';
+        hiddenType.value = 'Custom Solution';
+        label.innerText = 'What problem are you looking to solve?';
+        textarea.placeholder = "Describe the operational bottleneck, manual task, or system you're looking to build...";
+        textarea.required = true;
+        submitBtn.innerHTML = 'Send Message &rarr;';
+        phoneGroup.style.display = 'none';
+        phoneInput.required = false;
+        generalCompany.style.display = 'block';
+        atithiFields.style.display = 'none';
+        karatiqFields.style.display = 'none';
+      } else {
+        btnProd.classList.add('active');
+        btnSol.classList.remove('active');
+        subRow.style.display = 'block';
+        hiddenType.value = 'Product Demo';
+        phoneGroup.style.display = 'block';
+        phoneInput.required = true;
+        generalCompany.style.display = 'none';
+        setProductChoice(currentProductChoice);
+      }
+    }
+
+    function setProductChoice(prod) {
+      currentProductChoice = prod;
+      const btnAthiti = document.getElementById('subAthitios');
+      const btnKarat = document.getElementById('subKaratiq');
+      const hiddenProd = document.getElementById('selectedProduct');
+      const atithiFields = document.getElementById('atithiFields');
+      const karatiqFields = document.getElementById('karatiqFields');
+      const label = document.getElementById('messageLabel');
+      const textarea = document.getElementById('contactMessage');
+      const submitBtn = document.getElementById('contactSubmitBtn');
+      const atithiPropName = document.getElementById('atithiPropName');
+      const kiqStoreBrand = document.getElementById('kiqStoreBrand');
+
+      if (prod === 'athitios') {
+        btnAthiti.classList.add('active', 'teal-mode');
+        btnKarat.classList.remove('active', 'gold-mode');
+        hiddenProd.value = 'Atithi OS';
+        atithiFields.style.display = 'block';
+        karatiqFields.style.display = 'none';
+        if (atithiPropName) atithiPropName.required = true;
+        if (kiqStoreBrand) kiqStoreBrand.required = false;
+        label.innerText = 'Current PMS / Specific Requirements (Optional)';
+        textarea.placeholder = 'Tell us about your current PMS (e.g. Opera, eZee, IDS) or priority modules...';
+        textarea.required = false;
+        submitBtn.innerHTML = 'Book Atithi OS Demo &rarr;';
+      } else {
+        btnKarat.classList.add('active', 'gold-mode');
+        btnAthiti.classList.remove('active', 'teal-mode');
+        hiddenProd.value = 'KaratIQ';
+        karatiqFields.style.display = 'block';
+        atithiFields.style.display = 'none';
+        if (kiqStoreBrand) kiqStoreBrand.required = true;
+        if (atithiPropName) atithiPropName.required = false;
+        label.innerText = 'Catalog / Website / Key Goals (Optional)';
+        textarea.placeholder = 'Tell us about your inventory catalog, website (e.g. Shopify, Magento), or priority features...';
+        textarea.required = false;
+        submitBtn.innerHTML = 'Book KaratIQ Demo &rarr;';
+      }
+    }
+
+    // Auto-detect URL parameter on load
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const prodParam = (urlParams.get('product') || urlParams.get('demo') || '').toLowerCase();
+      if (prodParam === 'athitios' || prodParam === 'atithi') {
+        setInquiryType('products');
+        setProductChoice('athitios');
+      } else if (prodParam === 'karatiq' || prodParam === 'karat') {
+        setInquiryType('products');
+        setProductChoice('karatiq');
+      }
+    });
+
+    // GOOGLE APPS SCRIPT WEB APP INTEGRATION URL
+    // Set this to your deployed Google Apps Script Web App URL (/exec)
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyeokgzyh-D6aUjXOlTqd0s3neOnClDwrbAYNI4bFOwNupQrBC7gRRemXGSfpkOlKYtLQ/exec";
+
+    // Form submission helper with Google Sheets integration
+    async function handleContactSubmit(e) {
+      e.preventDefault();
+
+      const form = document.getElementById('contactForm');
+      const submitBtn = document.getElementById('contactSubmitBtn');
+      const feedback = document.getElementById('formFeedback');
+
+      const type = (document.getElementById('inquiryType') ? document.getElementById('inquiryType').value : 'Custom Solution') || 'Custom Solution';
+      const name = document.getElementById('contactName').value.trim();
+      const email = document.getElementById('contactEmail').value.trim();
+      const phone = document.getElementById('contactPhone') ? document.getElementById('contactPhone').value.trim() : '';
+      const company = document.getElementById('contactCompany') ? document.getElementById('contactCompany').value.trim() : '';
+      const msg = document.getElementById('contactMessage').value.trim();
+
+      // Client-side validation
+      if (!name || !email || !msg) {
+        feedback.className = 'form-feedback error';
+        feedback.innerHTML = `
+          <div class="form-feedback-title">⚠️ Required Fields Missing</div>
+          <p style="margin:0;">Please fill out all required fields marked with *.</p>
+        `;
+        feedback.style.display = 'block';
+        feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        return;
+      }
+
+      // Clear previous feedback state
+      feedback.style.display = 'none';
+      feedback.className = 'form-feedback';
+
+      // Show Loading State & prevent duplicate submissions
+      submitBtn.disabled = true;
+      submitBtn.classList.add('btn-loading');
+      submitBtn.innerHTML = '<span class="btn-spinner"></span> Submitting...';
+
+      const payload = {
+        name: name,
+        email: email,
+        company: company || 'N/A',
+        phone: phone ? (phone.startsWith('+') ? "'" + phone : phone) : 'N/A',
+        service: type,
+        message: msg,
+        inquiryType: type,
+        submittedAt: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+      };
+
+      try {
+        if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.trim() === '' || GOOGLE_SCRIPT_URL.includes('REPLACE_WITH')) {
+          throw new Error('Google Apps Script Web App URL is not configured.');
+        }
+
+        // Send to Google Apps Script endpoint using text/plain to avoid CORS preflight issues
+        const response = await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        let isSuccess = false;
+        try {
+          const resJson = await response.json();
+          if (resJson && resJson.result === 'success') {
+            isSuccess = true;
+          }
+        } catch (jsonErr) {
+          // If response was redirected or opaque but succeeded
+          if (response.ok || response.type === 'opaque') {
+            isSuccess = true;
+          }
+        }
+
+        if (isSuccess) {
+          // Reset form fields
+          form.reset();
+
+          // Smoothly switch view to Success Confirmation Card (Instant visibility, no scrolling needed)
+          const formContainer = document.getElementById('formFieldsContainer');
+          const successContainer = document.getElementById('successStateContainer');
+          const header = document.getElementById('formCardHeader');
+
+          if (formContainer && successContainer) {
+            formContainer.style.display = 'none';
+            if (header) header.style.display = 'none';
+            successContainer.style.display = 'flex';
+            successContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        } else {
+          throw new Error('Google Sheet rejected submission.');
+        }
+
+      } catch (err) {
+        console.error('Contact form submission error:', err);
+
+        // Error Handling: Preserve entered form data and display friendly error message
+        feedback.className = 'form-feedback error';
+        feedback.innerHTML = `
+          <div class="form-feedback-title">Something went wrong while submitting your request. Please try again.</div>
+          <p style="margin:0;">If the issue persists, you can also write directly to <a href="mailto:hello@happyflyconsultancy.com" style="color:#FFF;text-decoration:underline;">hello@happyflyconsultancy.com</a>.</p>
+        `;
+        feedback.style.display = 'block';
+        feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+      } finally {
+        // Re-enable the button to allow retry
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('btn-loading');
+        submitBtn.innerHTML = 'Send Message &rarr;';
+      }
+    }
+
+    // Reset view to allow user to submit another consultation note if desired
+    function resetContactForm() {
+      const formContainer = document.getElementById('formFieldsContainer');
+      const successContainer = document.getElementById('successStateContainer');
+      const header = document.getElementById('formCardHeader');
+      const feedback = document.getElementById('formFeedback');
+
+      if (formContainer && successContainer) {
+        successContainer.style.display = 'none';
+        formContainer.style.display = 'block';
+        if (header) header.style.display = 'block';
+        if (feedback) feedback.style.display = 'none';
+        formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  </script>
+</body>
+</html>

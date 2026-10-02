@@ -1,379 +1,907 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Fly Consultancy — Building AI Operating Systems for Modern Businesses</title>
-<meta name="description" content="Happy Fly Consultancy builds AI-powered platforms for industries. Creators of Atithi OS for hospitality and KaratIQ for jewellery retail.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --dark:#0B0B0F;
-  --surface:#12121A;
-  --surface-lighter:#1A1A24;
-  --accent:#5B8CFF;
-  --accent-glow:rgba(91, 140, 255, 0.2);
-  --secondary-accent:#7A5CFF;
-  --text-primary:#F5F5F7;
-  --text-secondary:#A1A1AA;
-  --text-dim:#71717A;
-  --white:#FFFFFF;
-  --teal:#0D9488;
-  --teal-light:#14B8A6;
-  --gold:#C9A050;
-  --serif:'DM Serif Display',Georgia,serif;
-  --sans:'Outfit',system-ui,sans-serif;
-  --mono:'JetBrains Mono',monospace;
-  --ease:cubic-bezier(.16,1,.3,1);
-  --radius-lg:16px;
-  --radius-md:12px;
-}
-html{scroll-behavior:smooth}
-body{font-family:var(--sans);color:var(--text-primary);background:var(--dark);overflow-x:hidden;-webkit-font-smoothing:antialiased}
-.container{max-width:1200px;margin:0 auto;padding:0 2rem}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Fly — AI Solutions &amp; Consultancy</title>
+  <meta name="description"
+    content="Happy Fly helps businesses identify, design and build practical AI solutions around real business problems. Custom AI consultancy, automation, agents, and enterprise integrations.">
+  <meta property="og:title" content="Happy Fly — AI Solutions &amp; Consultancy">
+  <meta property="og:description"
+    content="Turn your business problems into AI solutions. We identify, design, build and integrate technology around the way your business works.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/brand/og-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="assets/brand/og-preview.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/brand/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/brand/apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
 
-@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
-@keyframes pulse-ring{0%{transform:scale(1);opacity:.4}100%{transform:scale(1.5);opacity:0}}
-@keyframes glow-pulse{0%,100%{box-shadow:0 0 20px var(--accent-glow)}50%{box-shadow:0 0 40px rgba(91, 140, 255, 0.4)}}
+  <style>
+    /* HERO STYLES */
+    .hero {
+      position: relative;
+      padding: 10.5rem 0 6rem;
+      overflow: hidden;
+    }
 
-.reveal{opacity:0;transform:translateY(30px);transition:all .8s var(--ease)}.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.2s}.reveal-delay-3{transition-delay:.3s}
+    .hero-glow-bg {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 850px;
+      height: 450px;
+      background: radial-gradient(ellipse at center, rgba(79, 117, 255, 0.12) 0%, rgba(139, 92, 246, 0.07) 40%, transparent 70%);
+      filter: blur(60px);
+      pointer-events: none;
+      z-index: 0;
+    }
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.5rem 0;transition:all .4s var(--ease);background:transparent}
-nav.scrolled{background:rgba(11,11,15,.8);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);padding:1rem 0;border-bottom:1px solid rgba(255,255,255,0.05)}
-nav .container{display:flex;align-items:center;justify-content:space-between}
-.nav-logo{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:var(--white)}
-.nav-logo-mark{width:34px;height:34px;background:var(--accent);border-radius:8px;display:grid;place-items:center;font-weight:700;font-size:.65rem;color:var(--dark);font-family:var(--mono);box-shadow:0 0 15px var(--accent-glow)}
-.nav-logo-name{font-weight:600;font-size:1.05rem;letter-spacing:-0.01em}
-.nav-links{display:flex;gap:2.5rem;align-items:center}
-.nav-links a{color:var(--text-secondary);text-decoration:none;font-size:.88rem;font-weight:500;transition:color .3s;position:relative}
-.nav-links a:hover{color:var(--white)}
-.nav-links a.nav-cta{background:var(--accent);color:var(--dark);padding:.6rem 1.4rem;border-radius:8px;font-weight:600;box-shadow:0 0 15px var(--accent-glow)}
-.nav-links a.nav-cta:hover{background:var(--white);transform:translateY(-1px);box-shadow:0 5px 20px rgba(255,255,255,0.2)}
+    .hero-grid-pattern {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+      pointer-events: none;
+      z-index: 0;
+    }
 
-.mobile-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem}
-.mobile-toggle span{display:block;width:24px;height:2px;background:var(--white);margin:6px 0;border-radius:2px}
+    .hero .container {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 960px;
+    }
 
-/* HERO */
-.hero{min-height:90vh;display:flex;align-items:center;background:var(--dark);position:relative;overflow:hidden;padding:10rem 0 6rem}
-.hero::before{content:'';position:absolute;top:-10%;right:0;width:800px;height:800px;background:radial-gradient(circle,rgba(91,140,255,0.08) 0%,transparent 70%);border-radius:50%;animation:float 10s ease-in-out infinite}
-.hero::after{content:'';position:absolute;bottom:-10%;left:-5%;width:600px;height:600px;background:radial-gradient(circle,rgba(122,92,255,0.05) 0%,transparent 70%);border-radius:50%;animation:float 12s ease-in-out infinite reverse}
-.hero-grid{position:absolute;inset:0;opacity:.1;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:60px 60px}
-.hero .container{position:relative;z-index:2;text-align:center}
-.hero-badge{display:inline-flex;align-items:center;gap:.6rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);padding:.5rem 1.25rem;border-radius:100px;margin-bottom:2.5rem;animation:fadeUp .8s var(--ease) .2s both}
-.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
-.hero-badge span{font-size:.75rem;color:var(--text-secondary);font-weight:600;letter-spacing:.05em;text-transform:uppercase}
-.hero h1{font-family:var(--sans);font-weight:700;font-size:clamp(2.8rem,6vw,4.5rem);color:var(--white);line-height:1.05;letter-spacing:-0.03em;max-width:900px;margin:0 auto 1.5rem;animation:fadeUp .8s var(--ease) .35s both}
-.hero h1 span{background:linear-gradient(135deg,var(--accent),var(--secondary-accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{font-size:1.15rem;color:var(--text-secondary);line-height:1.6;max-width:650px;margin:0 auto 2.5rem;animation:fadeUp .8s var(--ease) .5s both}
-.hero-actions{display:flex;gap:1.25rem;justify-content:center;flex-wrap:wrap;animation:fadeUp .8s var(--ease) .65s both}
-.btn-primary{display:inline-flex;align-items:center;gap:.6rem;background:var(--accent);color:var(--dark);padding:1rem 2.25rem;border-radius:10px;text-decoration:none;font-weight:600;font-size:1rem;transition:all .3s var(--ease);box-shadow:0 0 20px var(--accent-glow)}
-.btn-primary:hover{background:var(--white);transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,255,255,0.15)}
-.btn-secondary{display:inline-flex;align-items:center;gap:.6rem;background:rgba(255,255,255,0.03);color:var(--text-primary);padding:1rem 2.25rem;border-radius:10px;text-decoration:none;font-weight:500;font-size:1rem;border:1px solid rgba(255,255,255,0.1);transition:all .3s}
-.btn-secondary:hover{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.2)}
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.4rem 1.15rem;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
 
-.hero-products-preview{display:flex;justify-content:center;gap:3rem;margin-top:5rem;animation:fadeUp .8s var(--ease) .8s both}
-.hero-product-chip{display:flex;align-items:center;gap:1rem;text-decoration:none;transition:all .4s var(--ease)}
-.hero-product-chip:hover{transform:translateY(-3px)}
-.hpc-icon{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;font-family:var(--mono);font-size:.6rem;font-weight:700}
-.hpc-icon.teal{background:rgba(20,184,166,0.1);color:var(--teal-light);border:1px solid rgba(20,184,166,0.2)}
-.hpc-icon.gold{background:rgba(201,160,80,0.1);color:var(--gold);border:1px solid rgba(201,160,80,0.2)}
-.hpc-text{text-align:left}.hpc-text strong{display:block;color:var(--white);font-size:.95rem;font-weight:600}.hpc-text span{font-size:.75rem;color:var(--text-dim)}
+    .hero-badge-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-teal);
+      box-shadow: 0 0 10px var(--accent-teal);
+    }
 
-/* WHAT WE DO */
-.what-we-do{padding:8rem 0;background:var(--surface)}
-.section-eyebrow{font-size:.8rem;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.15em;margin-bottom:1rem;display:block}
-.section-title{font-size:clamp(2rem,4vw,2.8rem);color:var(--white);letter-spacing:-0.02em;line-height:1.2;margin-bottom:1.5rem}
-.section-subtitle{font-size:1.1rem;color:var(--text-secondary);max-width:650px;line-height:1.6;margin-bottom:4rem}
-.wwd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
-.wwd-card{background:var(--dark);border:1px solid rgba(255,255,255,0.05);border-radius:var(--radius-lg);padding:2.5rem;transition:all .4s var(--ease)}
-.wwd-card:hover{border-color:var(--accent);transform:translateY(-5px)}
-.wwd-icon{width:56px;height:56px;border-radius:14px;background:var(--accent-glow);display:grid;place-items:center;margin-bottom:1.5rem;color:var(--accent)}
-.wwd-icon svg{width:28px;height:28px}
-.wwd-card h3{font-size:1.25rem;font-weight:600;margin-bottom:1rem;color:var(--white)}
-.wwd-card p{font-size:.95rem;color:var(--text-secondary);line-height:1.6}
+    .hero h1 {
+      font-size: clamp(2.6rem, 5.8vw, 4.5rem);
+      font-weight: 800;
+      color: var(--text-white);
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.75rem;
+    }
 
-/* PRODUCTS */
-.products{padding:8rem 0;background:var(--dark)}
-.products-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2.5rem}
-.product-card{border-radius:24px;padding:3.5rem;transition:all .5s var(--ease);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;min-height:420px;text-decoration:none;border:1px solid rgba(255,255,255,0.05)}
-.product-card:hover{transform:translateY(-8px);border-color:rgba(255,255,255,0.15)}
+    .hero h1 .gradient-text {
+      background: linear-gradient(135deg, #7BA4FF 0%, #B896FF 50%, #6EE7B7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
 
-.product-card.atithi{background:linear-gradient(135deg, #1A1C1E 0%, #0F1113 100%);}
-.product-card.atithi::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 0% 0%, rgba(20,184,166,0.05) 0%, transparent 50%);transition:opacity .5s}
-.product-card.atithi .pc-icon{background:var(--teal);color:var(--white)}
-.product-card.atithi .pc-link{color:var(--teal-light)}
+    .hero-lead {
+      font-size: clamp(1.08rem, 1.9vw, 1.28rem);
+      color: var(--text-muted);
+      max-width: 760px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.65;
+    }
 
-.product-card.karatiq{background:linear-gradient(135deg, #1C1917 0%, #0C0B0A 100%);}
-.product-card.karatiq::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 0% 0%, rgba(201,160,80,0.08) 0%, transparent 50%);transition:opacity .5s}
-.product-card.karatiq .pc-icon{background:var(--gold);color:var(--dark)}
-.product-card.karatiq .pc-link{color:var(--gold)}
+    .hero-lead strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
 
-.pc-top{display:flex;align-items:center;gap:1.25rem;margin-bottom:2rem;position:relative;z-index:2}
-.pc-icon{width:56px;height:56px;border-radius:14px;display:grid;place-items:center;font-family:var(--mono);font-size:.7rem;font-weight:700;box-shadow:0 10px 20px rgba(0,0,0,0.3)}
-.pc-name{font-size:1.75rem;font-weight:700;color:var(--white);letter-spacing:-0.01em}
-.pc-tagline{font-size:.9rem;color:var(--text-dim);font-weight:500;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1.5rem;display:block;position:relative;z-index:2}
-.product-card p{font-size:1.05rem;color:var(--text-secondary);line-height:1.65;margin-bottom:3rem;position:relative;z-index:2}
-.pc-link{display:inline-flex;align-items:center;gap:.75rem;font-weight:600;font-size:1rem;transition:all .3s var(--ease);z-index:2}
-.pc-link svg{transition:transform .3s}.pc-link:hover svg{transform:translateX(5px)}
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.1rem;
+      margin-bottom: 0;
+      flex-wrap: wrap;
+    }
 
-/* WHY */
-.why{padding:8rem 0;background:var(--surface)}
-.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
-.why-card{background:var(--dark);border:1px solid rgba(255,255,255,0.05);border-radius:var(--radius-lg);padding:2.25rem;transition:all .4s var(--ease)}
-.why-card:hover{border-color:var(--accent);transform:translateY(-4px)}
-.why-icon{width:52px;height:52px;border-radius:12px;background:rgba(255,255,255,0.03);display:grid;place-items:center;margin-bottom:1.5rem;color:var(--accent);border:1px solid rgba(255,255,255,0.05)}
-.why-card h3{font-size:1.15rem;font-weight:600;margin-bottom:.75rem;color:var(--white)}
-.why-card p{font-size:.9rem;color:var(--text-secondary);line-height:1.6}
+    /* OUTCOME CARDS */
+    .outcome-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 2rem 1.75rem;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
 
-/* VISION */
-.vision{padding:8rem 0;background:var(--dark);text-align:center}
-.vision-industries{display:flex;justify-content:center;gap:2rem;margin-top:4.5rem;flex-wrap:wrap}
-.vi-item{background:var(--surface);border:1px solid rgba(255,255,255,0.05);border-radius:24px;padding:3rem;flex:1;min-width:300px;transition:all .4s var(--ease)}
-.vi-item:hover{border-color:var(--accent);transform:scale(1.02)}
-.vi-icon{width:64px;height:64px;border-radius:16px;display:grid;place-items:center;margin:0 auto 2rem}
-.vi-icon.blue-bg{background:var(--accent-glow);color:var(--accent)}
-.vi-icon.dim-bg{background:rgba(255,255,255,0.03);color:var(--text-dim)}
-.vi-item h4{font-size:1.35rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
-.vi-item p{color:var(--text-secondary);font-size:.95rem;margin-bottom:2rem}
-.vi-tag{display:inline-block;padding:.4rem 1rem;border-radius:100px;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
-.vi-tag.live{background:rgba(91,140,255,0.1);color:var(--accent);border:1px solid var(--accent-glow)}
-.vi-tag.soon{background:rgba(255,255,255,0.05);color:var(--text-dim);border:1px solid rgba(255,255,255,0.05)}
+    .outcome-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
+    }
 
-/* CREDIBILITY */
-.credibility{padding:6rem 0;border-top:1px solid rgba(255,255,255,0.05);background:var(--dark)}
-.cred-stats{display:flex;justify-content:space-around;text-align:center;gap:3rem}
-.cred-stat-val{font-size:3.5rem;font-weight:700;color:var(--white);letter-spacing:-0.03em;margin-bottom:.5rem;display:block}
-.cred-stat-label{font-size:.85rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+    .outcome-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
 
-/* CTA */
-.cta{padding:10rem 0;background:var(--surface);text-align:center;position:relative;overflow:hidden}
-.cta-glow{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100%;height:300px;background:radial-gradient(circle at center bottom, rgba(91,140,255,0.1) 0%, transparent 70%);pointer-events:none}
-.cta h2{font-size:clamp(2.5rem,5vw,3.5rem);font-weight:700;color:var(--white);letter-spacing:-0.02em;margin-bottom:1.5rem}
-.cta p{font-size:1.15rem;color:var(--text-secondary);max-width:600px;margin:0 auto 3rem;line-height:1.6}
+    .outcome-verb {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+    }
 
-/* FOOTER */
-footer{padding:6rem 0 3rem;background:var(--dark);border-top:1px solid rgba(255,255,255,0.05)}
-.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;margin-bottom:4rem}
-.footer-brand .nav-logo{margin-bottom:1.5rem}
-.footer-brand p{color:var(--text-dim);font-size:.9rem;line-height:1.6;max-width:300px}
-.footer-col h4{color:var(--white);font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:2rem}
-.footer-col a{display:block;color:var(--text-dim);text-decoration:none;font-size:.95rem;margin-bottom:1rem;transition:color .3s}
-.footer-col a:hover{color:var(--accent)}
-.footer-bottom{padding-top:3rem;border-top:1px solid rgba(255,255,255,0.05);display:flex;justify-content:space-between;color:var(--text-dim);font-size:.85rem}
+    .outcome-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-/* RESPONSIVE */
-@media(max-width:1024px){
-  .products-grid{grid-template-columns:1fr}
-  .wwd-grid{grid-template-columns:repeat(2,1fr)}
-  .footer-top{grid-template-columns:1fr 1fr}
-}
-@media(max-width:768px){
-  .nav-links{display:none}.mobile-toggle{display:block}
-  .wwd-grid{grid-template-columns:1fr}
-  .vision-industries{flex-direction:column}
-  .cred-stats{flex-direction:column;gap:3rem}
-  .hero h1{font-size:2.8rem}
-  .footer-top{grid-template-columns:1fr}
-  .footer-bottom{flex-direction:column;gap:1.5rem;text-align:center}
-}
-</style>
+    .outcome-card:nth-child(1) .outcome-icon {
+      color: #60A5FA;
+      background: rgba(96, 165, 250, 0.1);
+    }
+
+    .outcome-card:nth-child(2) .outcome-icon {
+      color: #A78BFA;
+      background: rgba(167, 139, 250, 0.1);
+    }
+
+    .outcome-card:nth-child(3) .outcome-icon {
+      color: #34D399;
+      background: rgba(52, 211, 153, 0.1);
+    }
+
+    .outcome-card:nth-child(4) .outcome-icon {
+      color: #FBBF24;
+      background: rgba(251, 191, 36, 0.1);
+    }
+
+    .outcome-card:nth-child(5) .outcome-icon {
+      color: #F472B6;
+      background: rgba(244, 114, 182, 0.1);
+    }
+
+    .outcome-card:nth-child(6) .outcome-icon {
+      color: #38BDF8;
+      background: rgba(56, 189, 248, 0.1);
+    }
+
+    .outcome-card h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .outcome-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* TWO WAYS WE HELP BOXES */
+    .division-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 3.25rem 2.75rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .division-box:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+    }
+
+    .division-box.solutions-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-blue), transparent);
+    }
+
+    .division-box.products-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-purple), transparent);
+    }
+
+    .div-top-tag {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .division-box.solutions-box .div-top-tag {
+      color: var(--accent-blue);
+    }
+
+    .division-box.products-box .div-top-tag {
+      color: var(--accent-purple);
+    }
+
+    .div-heading {
+      font-size: 2.3rem;
+      font-weight: 800;
+      color: var(--text-white);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+    }
+
+    .div-tagline {
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--text-main);
+      font-family: var(--font-serif);
+      margin-bottom: 1.35rem;
+      display: block;
+    }
+
+    .div-description {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 2.25rem;
+    }
+
+    .div-bullets {
+      list-style: none;
+      margin-bottom: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .div-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.93rem;
+      color: var(--text-main);
+    }
+
+    .div-bullets svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .division-box.solutions-box .div-bullets svg {
+      color: var(--accent-blue);
+    }
+
+    .division-box.products-box .div-bullets svg {
+      color: var(--accent-purple);
+    }
+
+    /* WHAT WE BUILD */
+    .capability-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 2.25rem 2rem;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .capability-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
+    }
+
+    .capability-pill {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .capability-card h3 {
+      font-size: 1.28rem;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+    }
+
+    .capability-card p {
+      font-size: 0.93rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* HOW WE WORK PROCESS */
+    .step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 2.25rem 1.75rem;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .step-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
+    }
+
+    .step-num {
+      font-family: var(--font-mono);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.2);
+      margin-bottom: 1rem;
+    }
+
+    .step-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 0.65rem;
+      letter-spacing: -0.01em;
+    }
+
+    .step-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* PROOF / CREDIBILITY */
+    .cred-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 2rem 1.75rem;
+      transition: var(--transition);
+    }
+
+    .cred-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+
+    .cred-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 0.5rem;
+    }
+
+    .cred-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .division-box {
+        padding: 2.25rem 1.75rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<nav id="nav"><div class="container">
-  <a href="./" class="nav-logo">
-    <div class="nav-logo-mark">HF</div>
-    <span class="nav-logo-name">Happy Fly Consultancy</span>
-  </a>
-  <div class="nav-links">
-    <a href="./">Home</a>
-    <a href="athitios/">Athiti OS</a>
-    <a href="karatIQ/">KaratIQ</a>
-    <a href="#contact">Contact</a>
-    <a href="#contact" class="nav-cta">Book a Demo</a>
-  </div>
-  <button class="mobile-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
-</div></nav>
-
-<!-- HERO -->
-<section class="hero"><div class="hero-grid"></div><div class="container">
-  <div class="hero-badge"><div class="hero-badge-dot"></div><span>The Future of Enterprise AI</span></div>
-  <h1>Building AI Operating Systems for <span>Modern Businesses</span></h1>
-  <p class="hero-sub">We design intelligent platforms that transform how industries operate, sell, and serve customers — purpose-built platforms for hospitality and jewellery retail.</p>
-  <div class="hero-actions">
-    <a href="#products" class="btn-primary">Explore Platforms</a>
-    <a href="#contact" class="btn-secondary">Book a Demo</a>
-  </div>
-  <div class="hero-products-preview">
-    <a href="athitios/" class="hero-product-chip"><div class="hpc-icon teal">AO</div><div class="hpc-text"><strong>Atithi OS</strong><span>Hospitality Platform</span></div></a>
-    <a href="karatIQ/" class="hero-product-chip"><div class="hpc-icon gold">KIQ</div><div class="hpc-text"><strong>KaratIQ</strong><span>Jewellery Commerce</span></div></a>
-  </div>
-</div></section>
-
-<!-- WHAT WE DO -->
-<section class="what-we-do" id="about"><div class="container">
-  <span class="section-eyebrow reveal">Our Mission</span>
-  <h2 class="section-title reveal reveal-delay-1">AI Platforms, Not Just Services</h2>
-  <p class="section-subtitle reveal reveal-delay-2">We build full-stack AI products that run your business, replacing legacy friction with intelligent automation and superior experiences.</p>
-  <div class="wwd-grid">
-    <div class="wwd-card reveal reveal-delay-1">
-      <div class="wwd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg></div>
-      <h3>Product Thinking</h3>
-      <p>We build opinionated platforms with refined user experiences, designed to solve complex industry problems at scale.</p>
-    </div>
-    <div class="wwd-card reveal reveal-delay-2">
-      <div class="wwd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></div>
-      <h3>AI-First Core</h3>
-      <p>Intelligent automation is woven into the foundation of every product, from computer vision to predictive engines.</p>
-    </div>
-    <div class="wwd-card reveal reveal-delay-3">
-      <div class="wwd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
-      <h3>Industry Depth</h3>
-      <p>Generic AI fails. We go deep into specific verticals to build tools that solve real operator challenges.</p>
-    </div>
-  </div>
-</div></section>
-
-<!-- PRODUCTS -->
-<section class="products" id="products"><div class="container">
-  <span class="section-eyebrow reveal">Our Portfolio</span>
-  <h2 class="section-title reveal reveal-delay-1">Industry-Leading Platforms</h2>
-  <div class="products-grid">
-    <a href="athitios/" class="product-card atithi reveal reveal-delay-1">
-      <div>
-        <div class="pc-top"><div class="pc-icon">AO</div><span class="pc-name">Atithi OS</span></div>
-        <span class="pc-tagline">Hospitality Intelligence</span>
-        <p>A unified operating system for modern hotels. Smart check-in, contactless access, and AI-driven guest experiences.</p>
-      </div>
-      <span class="pc-link">Learn More <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
-    </a>
-    <a href="karatIQ/" class="product-card karatiq reveal reveal-delay-2">
-      <div>
-        <div class="pc-top"><div class="pc-icon">KIQ</div><span class="pc-name">KaratIQ</span></div>
-        <span class="pc-tagline">Jewellery Commerce</span>
-        <p>AI-powered shopping for jewellery retailers. Virtual try-ons, visual search, and intelligent recommendation logic.</p>
-      </div>
-      <span class="pc-link">Learn More <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
-    </a>
-  </div>
-</div></section>
-
-<!-- WHY -->
-<section class="why"><div class="container">
-  <span class="section-eyebrow reveal">The Advantage</span>
-  <h2 class="section-title reveal reveal-delay-1">Why Leaders Choose Happy Fly</h2>
-  <div class="why-grid">
-    <div class="why-card reveal reveal-delay-1">
-      <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg></div>
-      <h3>Rapid Deployment</h3>
-      <p>Skip years of R&D. Our platforms are production-ready and deploy in weeks.</p>
-    </div>
-    <div class="why-card reveal reveal-delay-2">
-      <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
-      <h3>Enterprise Scale</h3>
-      <p>Built for resilience. Our architecture handles high-volume transactions with 100% uptime.</p>
-    </div>
-    <div class="why-card reveal reveal-delay-3">
-      <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 8l4 4-4 4M8 12h7"></path></svg></div>
-      <h3>India-First Logic</h3>
-      <p>Deep integration with regional payment systems, logistics, and compliance frameworks.</p>
-    </div>
-  </div>
-</div></section>
-
-<!-- VISION -->
-<section class="vision"><div class="container">
-  <span class="section-eyebrow reveal">Future Roadmap</span>
-  <h2 class="section-title reveal reveal-delay-1">Reimagining Industries</h2>
-  <div class="vision-industries reveal reveal-delay-2">
-    <div class="vi-item">
-      <div class="vi-icon blue-bg"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg></div>
-      <h4>Hospitality</h4>
-      <p>Atithi OS Platform</p>
-      <span class="vi-tag live">Live</span>
-    </div>
-    <div class="vi-item">
-      <div class="vi-icon blue-bg"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
-      <h4>Jewellery Retail</h4>
-      <p>KaratIQ Platform</p>
-      <span class="vi-tag live">Live</span>
-    </div>
-    <div class="vi-item">
-      <div class="vi-icon dim-bg"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"></path></svg></div>
-      <h4>Automotive</h4>
-      <p>Next Generation AI</p>
-      <span class="vi-tag soon">Coming Soon</span>
-    </div>
-  </div>
-</div></section>
-
-<!-- CREDIBILITY -->
-<section class="credibility"><div class="container">
-  <div class="cred-stats reveal">
-    <div><span class="cred-stat-val">2</span><span class="cred-stat-label">AI Platforms</span></div>
-    <div><span class="cred-stat-val">8+</span><span class="cred-stat-label">Core Modules</span></div>
-    <div><span class="cred-stat-val">24/7</span><span class="cred-stat-label">AI Support</span></div>
-  </div>
-</div></section>
-
-<!-- CTA -->
-<section class="cta" id="contact"><div class="container">
-  <div class="cta-glow"></div>
-  <h2 class="reveal">Building the Future Together</h2>
-  <p class="reveal reveal-delay-1">Schedule a discovery call to see how our platforms can transform your business operations and customer experience.</p>
-  <div class="hero-actions reveal reveal-delay-2">
-    <a href="mailto:hello@happyflyconsultancy.com?subject=Demo Request" class="btn-primary">Book a Demo</a>
-    <a href="mailto:hello@happyflyconsultancy.com" class="btn-secondary">Contact Us</a>
-  </div>
-</div></section>
-
-<!-- FOOTER -->
-<footer><div class="container">
-  <div class="footer-top">
-    <div class="footer-brand">
-      <a href="./" class="nav-logo">
-        <div class="nav-logo-mark">HF</div>
-        <span class="nav-logo-name">Happy Fly Consultancy</span>
+  <!-- 1. GLOBAL NAVIGATION -->
+  <nav id="navbar">
+    <div class="container">
+      <a href="./" class="nav-brand">
+        <img src="assets/brand/logo-mark-64.png" alt="Happy Fly Logo" class="nav-brand-logo-mark" width="40" height="40">
+        <div class="nav-brand-title">
+          HAPPY FLY
+          <span class="nav-brand-subtitle">AI Solutions &amp; Consultancy</span>
+        </div>
       </a>
-      <p>Building AI operating systems for modern businesses. Creating industry-defining platforms for hospitality and retail.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Platforms</h4>
-      <a href="athitios/">Atithi OS</a>
-      <a href="karatIQ/">KaratIQ</a>
-      <a href="#">Roadmap</a>
-    </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <a href="#about">About</a>
-      <a href="#vision">Vision</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <div class="footer-col">
-      <h4>Social</h4>
-      <a href="#">LinkedIn</a>
-      <a href="#">Twitter</a>
-      <a href="#">GitHub</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>&copy; 2026 Happy Fly Consultancy. All rights reserved.</span>
-    <div style="display:flex;gap:2rem"><a href="#" style="color:inherit;text-decoration:none">Privacy Policy</a><a href="#" style="color:inherit;text-decoration:none">Terms</a></div>
-  </div>
-</div></footer>
 
-<script>
-const observer=new IntersectionObserver(e=>{e.forEach(t=>{if(t.isIntersecting)t.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-const nav=document.getElementById('nav');let ticking=false;
-window.addEventListener('scroll',()=>{if(!ticking){window.requestAnimationFrame(()=>{nav.classList.toggle('scrolled',window.scrollY>50);ticking=false});ticking=true}});
-</script>
+      <div class="nav-menu">
+        <a href="solutions/" class="nav-link">Solutions</a>
+        <!-- [PRESERVED PRODUCT LINK - HIDDEN] <a href="products/" class="nav-link">Products</a> -->
+        <a href="how-we-work/" class="nav-link">How We Work</a>
+        <a href="about/" class="nav-link">About</a>
+        <a href="contact/" class="btn btn-primary nav-cta">Talk to Us</a>
+      </div>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <a href="solutions/" class="nav-link mobile-link">Solutions</a>
+    <!-- [PRESERVED PRODUCT LINK - HIDDEN] <a href="products/" class="nav-link mobile-link">Products</a> -->
+    <a href="how-we-work/" class="nav-link mobile-link">How We Work</a>
+    <a href="about/" class="nav-link mobile-link">About</a>
+    <a href="contact/" class="btn btn-primary mobile-link">Talk to Us</a>
+  </div>
+
+  <!-- 2. HERO SECTION -->
+  <section class="hero">
+    <div class="hero-glow-bg"></div>
+    <div class="hero-grid-pattern"></div>
+
+    <div class="container">
+      <div class="hero-badge">
+        <div class="hero-badge-indicator"></div>
+        <span>Practical AI &amp; Software Engineering</span>
+      </div>
+
+      <h1>
+        Turn your business problems<br>
+        <span class="gradient-text">into AI solutions.</span>
+      </h1>
+
+      <p class="hero-lead">
+        We identify, design, build and integrate technology around the way your business works.
+        You bring the problem — we determine whether AI, automation, software, data, or a combination is the right
+        solution.
+      </p>
+
+      <div class="hero-actions">
+        <a href="contact/" class="btn btn-primary">
+          Book Your Free Consultation
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE HELP (WHAT WE BUILD) -->
+  <section class="how-we-help-section" id="what-we-build">
+    <div class="container">
+      <h2 class="how-we-help-title">How We Help</h2>
+
+      <div class="how-we-help-grid">
+        <!-- CARD 1: AI STRATEGY & DISCOVERY -->
+        <div class="how-we-help-card">
+          <div class="help-card-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <circle cx="12" cy="12" r="6"></circle>
+              <circle cx="12" cy="12" r="2"></circle>
+            </svg>
+          </div>
+          <h3>AI Strategy &amp; Discovery</h3>
+          <p class="help-card-text">We help you identify practical, high-impact AI opportunities that can create real
+            value for your business.</p>
+        </div>
+
+        <!-- CARD 2: AI AGENTS -->
+        <div class="how-we-help-card">
+          <div class="help-card-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="8" width="16" height="12" rx="3"></rect>
+              <circle cx="9" cy="13" r="1.25" fill="currentColor"></circle>
+              <circle cx="15" cy="13" r="1.25" fill="currentColor"></circle>
+              <line x1="9" y1="16.5" x2="15" y2="16.5"></line>
+              <line x1="12" y1="5" x2="12" y2="8"></line>
+              <circle cx="12" cy="3.5" r="1.5"></circle>
+            </svg>
+          </div>
+          <h3>AI Agents</h3>
+          <p class="help-card-text">We build bespoke AI agents tailored specifically to your workflows and business
+            needs.</p>
+        </div>
+
+        <!-- CARD 3: AI APPLICATIONS -->
+        <div class="how-we-help-card">
+          <div class="help-card-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 3 12 9 6"></polyline>
+              <polyline points="15 6 21 12 15 18"></polyline>
+            </svg>
+          </div>
+          <h3>AI Applications</h3>
+          <p class="help-card-text">We design and build AI-powered web and mobile applications around your business.</p>
+        </div>
+
+        <!-- CARD 4: AI INTEGRATION -->
+        <div class="how-we-help-card">
+          <div class="help-card-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+              <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+              <path d="M7 10v4a3 3 0 0 0 3 3h4"></path>
+            </svg>
+          </div>
+          <h3>AI Integration</h3>
+          <p class="help-card-text">We integrate AI into your existing tools, systems and technology ecosystem.</p>
+        </div>
+      </div>
+
+      <div class="how-we-help-footer">
+        <a href="contact/" class="help-consultation-link">Start with a free consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE WORK -->
+  <section style="padding: 6.5rem 0; border-top: 1px solid var(--border-subtle);" id="how-we-work">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Execution Framework</span>
+        <h2 class="section-title">How We Work</h2>
+        <p class="section-subtitle">
+          A clear four-stage process built around practical business needs and swift delivery.
+        </p>
+      </div>
+
+      <div class="card-grid-4">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <h3>Discover</h3>
+          <p>Understand the business problem, operational friction, and goals — no technical brief needed.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <h3>Identify</h3>
+          <p>Find where AI, automation or technology can actually help, choosing the simplest path to ROI.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <h3>Build</h3>
+          <p>Design and develop the solution with working prototypes, clear sprints, and regular reviews.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <h3>Deploy</h3>
+          <p>Integrate it into the business, train your team, ensure security, and launch cleanly.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 2.5rem; text-align: center;">
+        <a href="how-we-work/" class="btn btn-secondary">See How We Work &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- [PRESERVED: TWO WAYS WE HELP SECTION - HIDDEN PER SPEC]
+  <section
+    style="padding: 6.5rem 0; background: linear-gradient(180deg, var(--bg-dark) 0%, #0B0D14 100%); border-top: 1px solid var(--border-subtle);">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-eyebrow purple">Two Clear Divisions</span>
+        <h2 class="section-title">Two Ways We Help</h2>
+        <p class="section-subtitle">
+          Whether you need a custom system built for your company or want ready-made platforms created by our team.
+        </p>
+      </div>
+
+      <div class="card-grid-2">
+        <div class="division-box solutions-box">
+          <div>
+            <div class="div-top-tag">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              Division 01
+            </div>
+            <h3 class="div-heading">SOLUTIONS</h3>
+            <span class="div-tagline">"Built for your business."</span>
+            <p class="div-description">
+              Custom AI, automation and software designed around your specific business problem.
+            </p>
+
+            <ul class="div-bullets">
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Engineered around your exact workflow and internal systems
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                No technical specifications required from your side
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                End-to-end design, development, and ongoing integration
+              </li>
+            </ul>
+          </div>
+
+          <a href="contact/" class="btn btn-blue">
+            Book Free Consultation &rarr;
+          </a>
+        </div>
+
+        <div class="division-box products-box">
+          <div>
+            <div class="div-top-tag">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              Division 02
+            </div>
+            <h3 class="div-heading">PRODUCTS</h3>
+            <span class="div-tagline">"Built by Happy Fly."</span>
+            <p class="div-description">
+              Ready-made AI products created by Happy Fly for specific business and industry needs.
+            </p>
+
+            <ul class="div-bullets">
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <strong>KaratIQ:</strong> AI jewellery discovery and commerce platform
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <strong>Atithi OS:</strong> Intelligent hospitality operating system
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Proven in production, fast to deploy, fully supported
+              </li>
+            </ul>
+          </div>
+
+          <a href="products/" class="btn btn-purple">
+            Explore Products &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  -->
+
+  <!-- BUILT FOR IMPACT / ENGINEERING RIGOR -->
+  <section style="padding: 6.5rem 0; background: #0A0C13; border-top: 1px solid var(--border-subtle);"
+    id="built-by-happy-fly">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Engineering Rigor</span>
+        <h2 class="section-title">Why Happy Fly</h2>
+        <p class="section-subtitle">
+          We back every client engagement with deep engineering rigor, production reliability, and practical business focus.
+        </p>
+      </div>
+
+      <div class="card-grid-4">
+        <div class="cred-card">
+          <h3>Problem-First</h3>
+          <p>We never force AI where conventional software or simpler automation delivers a faster, more reliable
+            result.</p>
+        </div>
+
+        <div class="cred-card">
+          <h3>Production-Grade</h3>
+          <p>We engineer resilient architectures, automated failovers, and rigorous testing built for high reliability and scale.</p>
+        </div>
+
+        <div class="cred-card">
+          <h3>Data Privacy</h3>
+          <p>Your business data remains strictly yours. We deploy isolated, secure architectures with zero public model
+            leakage.</p>
+        </div>
+
+        <div class="cred-card">
+          <h3>Full Ownership</h3>
+          <p>From initial discovery and UX design to backend development, integrations, and deployment — we own the
+            outcome.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 3.5rem; text-align: center;">
+        <a href="contact/" class="btn btn-primary" style="padding: 1rem 2.25rem; font-size: 1.05rem;">
+          Start a Free Consultation
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. FINAL CTA -->
+  <section class="final-cta-section">
+    <div class="container">
+      <div class="final-cta-card">
+        <span class="section-eyebrow" style="color:var(--text-white); margin-bottom:1rem">Start the Conversation</span>
+        <h2>Have a business problem you're trying to solve?</h2>
+        <p>
+          Tell us what you're trying to improve. We'll help you explore where AI and technology can make a real
+          difference.
+        </p>
+
+        <div class="final-cta-actions">
+          <a href="contact/" class="btn btn-primary" style="padding:1rem 2.25rem; font-size:1.05rem">
+            Talk to Us &rarr;
+          </a>
+          <a href="solutions/" class="btn btn-secondary" style="padding:1rem 2.25rem; font-size:1.05rem">
+            Explore Solutions
+          </a>
+        </div>
+
+        <div class="final-cta-note">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Direct response from our engineering leadership within 24 hours. No sales pressure.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="./" class="nav-brand">
+            <img src="assets/brand/logo-mark-64.png" alt="Happy Fly Logo" class="nav-brand-logo-mark" width="40" height="40">
+            <div class="nav-brand-title">
+              HAPPY FLY
+              <span class="nav-brand-subtitle">AI Solutions &amp; Consultancy</span>
+            </div>
+          </a>
+          <p>
+            Happy Fly helps businesses identify, design and build practical AI solutions around real business problems.
+            Custom AI consultancy, intelligent automation, and software engineering.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="solutions/">Solutions</a></li>
+            <!-- [PRESERVED: <li><a href="products/">Products</a></li>] -->
+            <li><a href="how-we-work/">How We Work</a></li>
+            <li><a href="about/">About</a></li>
+            <li><a href="contact/">Talk to Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Capabilities</h4>
+          <ul class="footer-links">
+            <li><a href="solutions/">AI Strategy &amp; Discovery</a></li>
+            <li><a href="solutions/">Intelligent Automation</a></li>
+            <li><a href="solutions/">Custom AI Applications</a></li>
+            <li><a href="solutions/">Enterprise Integration</a></li>
+          </ul>
+        </div>
+        <!-- [PRESERVED PRODUCT FOOTER LINKS:
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul class="footer-links">
+            <li><a href="karatIQ/">KaratIQ</a></li>
+            <li><a href="athitios/">Atithi OS</a></li>
+          </ul>
+        </div>
+        ]-->
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:hello@happyflyconsultancy.com">hello@happyflyconsultancy.com</a></li>
+            <li><a href="contact/">Schedule Consultation</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Happy Fly. All rights reserved.</div>
+        <div style="display:flex; gap:1.5rem">
+          <a href="privacy/" style="color:var(--text-dim); text-decoration:none">Privacy Policy</a>
+          <a href="terms/" style="color:var(--text-dim); text-decoration:none">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Header shadow on scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Mobile menu toggle with accessibility & scroll lock
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    if (mobileToggle && mobileDrawer) {
+      mobileToggle.addEventListener('click', () => {
+        const isOpen = mobileDrawer.classList.toggle('open');
+        mobileToggle.classList.toggle('active', isOpen);
+        mobileToggle.setAttribute('aria-expanded', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      });
+      document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileDrawer.classList.remove('open');
+          mobileToggle.classList.remove('active');
+          mobileToggle.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        });
+      });
+    }
+  </script>
 </body>
+
 </html>
